@@ -83,6 +83,5 @@ def myFunction():
     global x
     x='fantastic'
     print(x)
-
 myFunction()
 print(x)
