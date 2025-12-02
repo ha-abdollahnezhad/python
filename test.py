@@ -161,3 +161,5 @@ print (a, " ", b, " ", c)
 #random number
 import random
 print(random.randrange(1, 10))
+
+# 13-
