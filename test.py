@@ -115,3 +115,49 @@ x = b"Hello"	#bytes
 x = bytearray(5)	#bytearray	
 x = memoryview(bytes(5))	#memoryview	
 x = None	#NoneType
+
+# 12- numbers 
+#int, float, complex
+#integer
+x = 1
+y = 123456789012345678901234567890
+z = -1234567890
+
+print(x, " ",y, " ",z)
+
+#float
+
+x = 1.10
+y = 1.0
+z = -35.59
+print(x, " ",y, " ",z)
+
+x = 35e3
+y = 12E4
+z = -87.7e100
+
+print(x, " ",y, " ", z)
+
+#complex -> Complex numbers are written with a "j" as the imaginary part
+x = 3+5j
+y = 5j
+z = -5j
+
+print(x, " ", y, " ",z)
+
+#type conversion
+x = 1
+y = 2.8
+z = 1j
+
+a = float(x)
+b = int(y)
+c = complex(x)
+
+print (a, " ", b, " ", c)
+#Note: You cannot convert complex numbers into another number type.
+
+
+#random number
+import random
+print(random.randrange(1, 10))
