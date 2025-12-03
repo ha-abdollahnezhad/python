@@ -162,4 +162,30 @@ print (a, " ", b, " ", c)
 import random
 print(random.randrange(1, 10))
 
-# 13-
+# 13- strings
+
+print("hello 'ali'", 'hello "mohammad"')
+
+a = """lorem ipsum dolor sit amet,
+consectetur adipiscing elit,
+sed do eiusmod tempor incididunt 
+ut laborre et dolore magna  aliqua."""
+print(a)
+
+a = "Hello, Mohammad!"
+print(a[0])
+
+for x in "in god we trust" :
+    print(x)
+
+print(len(a))
+txt = "in god we trust"
+print("free" in txt)
+print("god" in txt)
+
+if "we" in txt :
+    print("Yes, 'we' is present.")
+
+print("mother" not in txt)
+if "light" not in txt :
+    print("No, 'light' is not present.") 
