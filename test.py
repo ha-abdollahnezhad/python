@@ -198,3 +198,24 @@ print(a[:15]) #slice from start to position y
 print(a[6:]) #slice from position x to end
 print(a[-16:]) #negative indexing slice sentences from the end
 print(a[-8:-1])
+
+# 15- modify strings
+a = "in the name of god"
+print(a.upper()) #the upper() method returns the string in upper case.
+a = "IN THE NAME OF GOD"
+print(a.lower()) #the lower() method returns the string in lower case.
+a = " in the name of god "
+print(a.strip()) #the strip() method removes any whitespace from the beginning or the end.
+a = "Hello, World!"
+print(a.replace("H", "J")) #the replace() method replace a string with another string.
+print(a.split(",")) #the split() method splits the string into substrings if it finds instances of the separator.
+print(a.encode())
+a = '  hello'
+print(a.lstrip())
+
+
+# 16- String Concatenation
+a = "in the name"
+b = "of god"
+c = a +" "+ b
+print(c)
