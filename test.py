@@ -189,3 +189,12 @@ if "we" in txt :
 print("mother" not in txt)
 if "light" not in txt :
     print("No, 'light' is not present.") 
+
+# 14- slicing string
+
+a = "hello every body"
+print(a[2:11]) #slice from position x to y
+print(a[:15]) #slice from start to position y
+print(a[6:]) #slice from position x to end
+print(a[-16:]) #negative indexing slice sentences from the end
+print(a[-8:-1])
