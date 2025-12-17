@@ -236,3 +236,28 @@ print(txt)
 txt = f"The price is {22.369 * 45.000569:.7f} Rials"
 print(txt)
 
+# 18- Escape Character
+# The escape character allows you to use double quotes when you normally would not be allowed.
+txt = "my first name is \"Hamed\" but some people call me \"abdollah\" "
+print(txt)
+
+#\' single quote
+#\\ Backslash
+#\n new line
+#\r carriage return
+#\t tab
+#\b backspace
+#\f form feed
+#\ooo octal value
+#\xhh hex value
+
+
+myTuple = ("mohammad", "ali", "fatemeh")
+x = "#".join(myTuple)
+print(x)
+
+myDict = {"name": "hamed", "country": "IRAN"}
+mySeperator = "test"
+x = mySeperator.join(myDict)
+print(x)
+print(myDict)
