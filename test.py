@@ -219,3 +219,20 @@ a = "in the name"
 b = "of god"
 c = a +" "+ b
 print(c)
+
+# 17- python - format - strings
+# F-Strings
+
+age = 30
+txt = f"My name is hamed, I'm {age} years old."
+print(txt)
+
+# Placeholders and Modifiers
+
+price = 100
+txt = f"The price is {price:.3f} Rials"
+print(txt)
+
+txt = f"The price is {22.369 * 45.000569:.7f} Rials"
+print(txt)
+
