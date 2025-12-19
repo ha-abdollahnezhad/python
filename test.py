@@ -261,3 +261,61 @@ mySeperator = "test"
 x = mySeperator.join(myDict)
 print(x)
 print(myDict)
+
+# 19- Boolean Values
+
+print(10 > 9)
+print(10 < 9)
+print(10 == 9)
+
+a = 200
+b = 33
+
+if b>a :
+    print("b is grater than a")
+else :
+    print("b is not greater than a")
+
+# Evaluate Values and Variables
+
+print(bool("hello"))
+print(bool(15))
+print("------------------")
+a = "hello"
+b = 15
+c = 0
+d = ""
+e = {}
+f = []
+g = ()
+print(bool(a))
+print(bool(b))
+print(bool(c))
+print(bool(d))
+print(bool(e))
+print(bool(f))
+print(bool(g))
+
+print("-----------------")
+
+class myclass():
+    def __len__(self):
+        return 0
+    
+myobj = myclass()
+print(bool(myobj))
+print("-----------------")
+
+def myfunction():
+    return True
+
+print(myfunction())
+print("-----------------")
+
+if myfunction():
+    print("!Yes")
+else:
+    print("!No")
+print("-----------------")
+x = 200
+print(isinstance(x ,int))
