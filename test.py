@@ -319,3 +319,66 @@ else:
 print("-----------------")
 x = 200
 print(isinstance(x ,int))
+print("-----------------")
+
+# 20- Operators
+# Arithmetic Operators
+x = 15
+y = 4
+print(x+y)
+print(x-y)
+print(x*y)
+print(x/y)
+print(x%y)
+print(x**y)
+print(x//y)
+
+"""
+python has tow division operators:
+/ - Division (return a float)
+// - Floor division (return an integer)
+"""
+# Assignment Operators
+"""
+x = 5
+x += 5 # x = x + 5
+x -= 5 # x = x - 5
+x *= 5 # x = x * 5
+x /= 5 # x = x / 5
+x %= 5 # x = x % 5
+x //= 5 # x = x // 5
+x **= 5 # x = x ** 5
+
+Bitwise Operators
+x &= 5 # x = x & 5
+x |= 5 # x = x | 5
+x ^= 5 # x = x ^ 5
+x >>= 5 # x = x >> 5
+x <<= 5 # x = x << 5
+"""
+x = 3
+y = 5
+
+x &= y
+print(x)
+
+# The Walrus Operator :=
+
+numbers = [1, 2, 3, 4, 5]
+count = len(numbers)
+if count > 3:
+    print(f"List has {count} elements")
+
+if (count := len(numbers)) > 3:
+    print(f"List has {count} elements")
+
+# Comparison Operators
+x = 5
+y = 3
+
+print(x == y) # equal
+print(x != y) # not equal
+print(x > y) # greater than
+print(x < y) # less than
+print(x >= y) # greater than or equal to
+print(x <= y) # less than or equal to
