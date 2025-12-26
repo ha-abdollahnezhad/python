@@ -382,3 +382,143 @@ print(x > y) # greater than
 print(x < y) # less than
 print(x >= y) # greater than or equal to
 print(x <= y) # less than or equal to
+
+# chaining comparison operators
+print(1 < x < 10)
+print(1 < x and x < y)
+
+# Logical Operators
+
+"""
+and -> return true if both statements are true
+x < 5 and x < 10
+or -> returns true if one of the statements is true
+x < 5 or x < 4
+not -> reverse the result, returns False if the result is true
+not(x < 5 and x < 10)
+"""
+x = 5
+print(x > 0 and x < 10)
+print(x < 5 or x > 10)
+print(not(x > 3 and x < 10))
+
+#Identity Operators
+"""
+is -> returns true if both variables are the same object
+is not -> returns true if both variables are not the same object
+"""
+
+x = ["apple", "banana"]
+y = ["apple", "banana"]
+z = x
+print(x is z)
+print(x is y)
+print(x == y)
+print(x is not y)
+
+"""
+Difference Between is and ==
+is - Checks if both variables point to the same object in memory
+== - Checks if the values of both variables are equal
+"""
+
+# Membership Operators
+"""
+in -> return true if a sequence with the specified value is present in the object
+not in -> returns true if a sequence with the specified value is not present in the object
+"""
+
+fruits = ["apple", "banana", "cherry"]
+
+print("banana" in fruits)
+print("melon" not in fruits)
+
+
+# Membership in String
+
+text = "hello friends"
+print("h" in text)
+print("friends" in text)
+print("my" not in text)
+print("yes" in text)
+
+# Bitwise Operators
+"""
+& -> AND -> Sets each bit to 1 if both bits are 1
+| -> OR -> Sets each bit to 1 if one of two bits is 1
+^ -> XOR -> Sets each bit to 1 if only one of two bits is 1
+~ -> NOT -> Inverts all the bits
+<< -> Zero fill left shift -> Shift left by pushing zeros in from the right and let the leftmost bits fall off
+>> -> Signed right shift -> Shift right by pushing copies of the leftmost bit in from the left, and let the rightmost bits fall off
+"""
+print(6 & 3)
+"""
+The binary representation of 6 is 0110
+The binary representation of 3 is 0011
+
+Then the & operator compares the bits and returns 0010, which is 2 in decimal.
+"""
+
+print(6 | 3)
+
+"""
+The binary representation of 6 is 0110
+The binary representation of 3 is 0011
+
+Then the | operator compares the bits and returns 0111, which is 7 in decimal.
+"""
+
+print(6 ^ 3)
+"""
+The binary representation of 6 is 0110
+The binary representation of 3 is 0011
+
+Then the ^ operator compares the bits and returns 0101, which is 5 in decimal.
+"""
+print(6 << 1)
+print(6 >> 1)
+print(7 >> 1)
+print(10 >> 1)
+
+
+# Operator Precedence
+
+"""
+() -> Parantheses
+----------
+** -> Exponentiation
+----------
++x -x ~x -> Unary plus, unary minus, and bitwise NOT
+----------
+* / // % -> Multiplication, division, floor division, and modulus
+----------
++ - -> Addition and subtraction
+----------
+<< >> -> Bitwise left and right shifts
+----------
+& -> Bitwise AND
+----------
+^ -> Bitwise XOR
+----------
+| -> Bitwise OR
+----------
+== != > >=
+< <= is    is not  -> Comparisons, identity, and membership operators
+in    not in
+----------
+not -> Logical NOT
+----------
+and -> AND
+----------
+or -> OR
+----------
+"""
+
+print((6 + 3) - (2 + 3))
+print(5 + 4 - 7 + 3)
+
+"""
+Addition + and subtraction - has the same precedence,
+and therefore we evaluate the expression from left to right
+"""
+
