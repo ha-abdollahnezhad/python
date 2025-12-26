@@ -521,4 +521,32 @@ print(5 + 4 - 7 + 3)
 Addition + and subtraction - has the same precedence,
 and therefore we evaluate the expression from left to right
 """
+# 21-Lists
+# List : Lists are used to store
+# multiple items in a single variable.
 
+thisList = ['apple', 'banana', 'cherry']
+print(thisList)
+
+# Allow Duplicates
+
+thisList = ['apple', 'banana', 'cherry', 'apple', 'cherry']
+print(thisList)
+
+# List Length
+
+print(len(thisList))
+
+# List Items - Data Types
+list1 = ['apple', 'banana', 'cherry']
+list2 = [1, 2, 5, 7, 9, 3]
+list3 = [True, False, False]
+
+
+list4 = ['abcdefg', 34, True, 40, 'male']
+
+print(type(list4))
+
+# The list() Constructor
+thisList = list(('apple', 'banana', 'cherry'))
+print(thisList)
