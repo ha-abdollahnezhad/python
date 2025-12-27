@@ -550,3 +550,94 @@ print(type(list4))
 # The list() Constructor
 thisList = list(('apple', 'banana', 'cherry'))
 print(thisList)
+
+# Access List Items
+print("first item of list : ",thisList[0], "| second item of list : ", thisList[1])
+
+print("Last item by negetive index : ", thisList[-1])
+
+thisList = ['apple', 'banana', 'cherry', 'orange', 'kiwi', 'melon', 'mango']
+print(thisList[2:5])
+"""
+Note: The search will start at index 2 (included) and end at index 5 (not included).
+"""
+
+print(thisList[:4])
+print(thisList[2:])
+print(thisList[-4:-1])
+
+
+if (searchItem := 'watermelon') in thisList:
+    print(f"Yes {searchItem} is member of list")
+else:
+    print(f'{searchItem} is not member of list')
+
+# Change List Item
+print("----------\n",thisList)
+thisList[1] = 'blackcurrant'
+print(thisList)
+
+print("----------")
+thisList[1:3] = ['blackcurrant', 'watermelon']
+print(thisList)
+
+print("----------")
+thisList[1:6] = ['watermelon']
+print(thisList)
+
+# Insert Items
+print("----------")
+thisList.insert(0, "kiwi")
+print(thisList)
+
+# Append Items
+print("----------")
+thisList.append('orange')
+print(thisList)
+
+# Extend List
+print("----------")
+tropical = ['mango', 'pineapple', 'papaya']
+thisList.extend(tropical)
+print(thisList)
+
+# Add Any Iterable Object
+print("----------")
+thisList = ['apple', 'banana', 'melon']
+thisTuple = ('kiwi', 'cherry')
+thisList.extend(thisTuple)
+print(thisList)
+
+# Remove List Items
+print("----------")
+thisList.remove('kiwi')
+print(thisList)
+
+print("----------")
+thisList.append('banana')
+print(thisList)
+thisList.remove('banana')
+print(thisList)
+
+
+# Remove Specified Index
+print("----------")
+thisList.insert(0, 'banana')
+print(thisList)
+thisList.pop(0)
+print(thisList)
+
+
+print("----------")
+print(thisList)
+thisList.pop()
+print(thisList)
+
+print("----------")
+del thisList[1]
+print(thisList)
+#del thisList # Delete The List Completely.
+
+print("----------")
+thisList.clear()
+print(thisList)
