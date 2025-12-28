@@ -641,3 +641,114 @@ print(thisList)
 print("----------")
 thisList.clear()
 print(thisList)
+
+
+# Loop Through a List
+print("----------")
+thisList = ['apple', 'banana', 'cherry']
+for x in thisList:
+    print(x)
+# Loop Through the Index Numbers
+print("----------")
+for i in range(len(thisList)):
+    print(thisList[i])
+
+# Using a While Loop
+print("----------")
+i = 0
+while i < len(thisList):
+    print(thisList[i])
+    i = i+1
+
+# Looping Using List Comprehension.
+# List Comprehension offers the
+# shortest syntax for looping through lists
+print("----------")
+[print(x) for x in thisList]
+
+# List Comprehension
+# Based on a list of fruits, you want a new list,
+# containing only the fruits with the letter "a" in
+# the name.
+print("----------")
+fruits = ['apple', 'banana', 'cherry', 'kiwi', 'mango']
+newList = []
+
+for x in fruits:
+    if "a" in x:
+        newList.append(x)
+print(newList)
+
+
+print("----------")
+newList.clear()
+for i in range(len(fruits)):
+    if "a" in fruits[i]:
+        newList.insert(i,fruits[i])
+print(newList)
+
+print("----------")
+newList.clear()
+
+newList = [x for x in fruits if "a" in x]
+# newList = [expression for item in iterable if condition == True]
+print(newList)
+
+print("----------")
+
+newList = [x for x in fruits if x != 'apple']
+print(newList)
+
+print("----------")
+newList=[x for x in range(10) if x < 5]
+print(newList)
+
+print("----------")
+newList = [x.upper() for x in fruits]
+print(newList)
+
+print("----------")
+newList = ['hello' for x in fruits]
+print(newList)
+
+print("----------")
+newList = [x if x != "banana" else "orange" for x in fruits]
+print(newList)
+
+# Sort Lists
+# Sort List Alphanumerically
+print("----------")
+thisList = ['orange', 'mango', 'kiwi', 'pineapple', 'banana', 'apple']
+thisList.sort()
+print(thisList)
+
+print("----------")
+thisList.sort(reverse=True)
+print(thisList)
+
+print("----------")
+# Customize Sort Function.
+# you can also customize your own function by using
+# the keyword argument key = function
+
+def myFunc(n):
+    return abs(n - 50)
+
+thisList = [100, 50, 65, 82, 23]
+thisList.sort(key=myFunc)
+print(thisList)
+
+# Case Insensitive Sort
+print("----------")
+thisList = ['apple', 'Banana', 'Orange', 'kiwi', 'Mango']
+thisList.sort()
+print(thisList)
+
+print("----------")
+thisList.sort(key = str.lower)
+print(thisList)
+
+print("----------")
+# Reverse Order
+thisList.reverse()
+print(thisList)
