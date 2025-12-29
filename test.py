@@ -752,3 +752,66 @@ print("----------")
 # Reverse Order
 thisList.reverse()
 print(thisList)
+
+# Copy List
+"""
+You cannot copy a list simply by typing list2 = list1, because: list2 will
+only be a reference to list1, and changes made in list1 will
+automatically also be made in list2.
+"""
+
+# Use copy() method
+print("----------")
+myList = thisList.copy()
+print(myList)
+
+# Use the list() method
+print("----------")
+thisList.append('peach')
+myList = list(thisList)
+print(myList)
+
+# Use the slice operator
+print("----------")
+myList = thisList[:]
+print(myList)
+
+# Join Two Lists
+print("----------")
+list1 = ['a', 'b', 'c', 'd']
+list2 = [1, 2, 3, 4]
+list3 = list1 + list2
+print(list3)
+
+print("----------")
+for x in list2:
+    list1.append(x)
+print(list1)
+
+print("----------")
+list1.extend(list2)
+print(list1)
+
+# 22-Tuples
+# Tuples are Ordered and unchangeable.Allows duplicate members.
+print("----------")
+myTuple = ('apple', 'banana', 'cherry', 'mango', 'apple', 'melon')
+print(myTuple)
+
+print("----------")
+print('tuple length is: ', len(myTuple))
+
+print("----------")
+myTuple = ('apple',)
+print(type(myTuple))
+
+print("----------")
+myTuple = ('apple')
+print(type(myTuple))
+
+print("----------")
+tuple1 = ('apple', 'banana', 'cherry')
+tuple2 = (1, 5, 7, 9, 3)
+tuple3 = (True, False, False)
+tuple4 = ('abcd', 35, True, 50, 'male')
+print(type(tuple4))
