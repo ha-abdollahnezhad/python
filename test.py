@@ -815,3 +815,135 @@ tuple2 = (1, 5, 7, 9, 3)
 tuple3 = (True, False, False)
 tuple4 = ('abcd', 35, True, 50, 'male')
 print(type(tuple4))
+
+# the tuple() Constructor
+print("-------------------")
+thisTuple = tuple(('apple', 'banana', 'cherry', 'mango', 'watermelon'))
+print(thisTuple)
+
+# Access Tuple Items
+print("-------------------")
+print(thisTuple[1])
+
+# Negative Indexing
+print("-------------------")
+print(thisTuple[-1])
+
+# Range of Indexes
+print("-------------------")
+print(thisTuple)
+print(thisTuple[1:4])
+print(thisTuple[2:])
+print(thisTuple[:3])
+print(thisTuple[-6:-1])
+
+if 'apple' in thisTuple:
+    print('Yes, "apple" is in the tuple')
+
+print("-------------------")
+# Change Tuple Values
+# Once a tuple is created, you cannot change its values. Tuples
+# are unchangeable, or immutable as it also is called.
+# But there is a workaround. You can convert the tuple into a list,
+# change the list, and convert the list back into a tuple
+
+print(thisTuple)
+y = list(thisTuple)
+y[1] = 'kiwi'
+thisTuple = tuple(y)
+print(thisTuple)
+
+print("-------------------")
+# Add Items
+# Since tuples are immutable, they do not have a built-in append()
+# method, but there are other ways to add items to a tuple.
+print(thisTuple)
+y = list(thisTuple)
+y.append('banana')
+thisTuple = tuple(y)
+print(thisTuple)
+
+print("-------------------")
+# Add tuple to a tuple
+y = ('grap',)
+thisTuple += y
+print(thisTuple)
+
+print("-------------------")
+# Remove Items
+# Note: You cannot remove items in a tuple.
+
+y = list(thisTuple)
+y.remove('grap')
+thisTuple = tuple(y)
+print(thisTuple)
+
+#del thisTuple
+
+print("-------------------")
+thisTuple = ('apple', 'banana', 'cherry')
+(apple, banana, cherry) = thisTuple
+print(apple)
+print(banana)
+print(cherry)
+
+print("-------------------")
+# Note: The number of variables must match the number of values
+# in the tuple, if not, you must use an asterisk to collect the
+# remaining values as a list.
+
+# Using Asterisk
+
+thisTuple = ('apple', 'banana', 'cherry', 'strawberry', 'raspberry')
+(green, yellow, *red) = thisTuple
+print(green)
+print(yellow)
+print(red)
+
+print("-------------------")
+(green, *tropic, red) = thisTuple
+print(green)
+print(tropic)
+print(red)
+
+
+# Loop Tuples
+# Loop Through a Tuple
+print("-------------------")
+for x in thisTuple:
+    print(x)
+
+# Loop Through the Index Numbers
+print("-------------------")
+for i in range(len(thisTuple)):
+    print(thisTuple[i])
+
+# Using a While Loop
+print("-------------------")
+i = 0
+while i < len(thisTuple):
+    print(thisTuple[i])
+    i = i+1
+
+# Join Tuples
+print("-------------------")
+tuple1 = ('a', 'b', 'c')
+tuple2 = (1, 2, 3)
+
+tuple3 = tuple1 + tuple2
+print(tuple3)
+
+# Multiply Tuples
+print("-------------------")
+fruits = ('apple', 'banana', 'cherry')
+myTuple = fruits * 2
+print(myTuple)
+
+# Tuple Methods
+print("-------------------")
+print(thisTuple)
+print(thisTuple.count('apple'))
+print(thisTuple.index('cherry'))
+
+
+print("-------------------")
