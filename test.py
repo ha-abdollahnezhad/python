@@ -947,3 +947,209 @@ print(thisTuple.index('cherry'))
 
 
 print("-------------------")
+
+# 23- Phyton Sets
+"""
+A set is a collection which is unordered, unchangeable*, and unindexed.
+Set items are unorderd, unchangeable, and do not allow duplicate values.
+"""
+
+thisSet = {'apple', 'banana', 'cherry', 'melon', 'kiwi'}
+print(thisSet)
+print("-------------------")
+
+"""Once a set is created, you cannot change its items, but you can remove
+items and add new items.
+Set cannot have two items with the same value.
+Note : The value True and 1 are considered the same value in sets, and are
+treated as duplicates.
+Note : The values False and 0 are considered the same value in sets, and are
+treated as duplicates
+"""
+
+
+thisSet = {'apple', 'banana', 'cherry', 'pineapple', 'melon', 'apple', 1, True}
+print(thisSet)
+
+thisSet = {'apple', 'banana', 0, False}
+print(thisSet)
+print("-------------------")
+
+print(len(thisSet))
+print("-------------------")
+set1 = {'vahid', 'majid', 'mobid'}
+set2 = {1, 2, 3, 4, 5}
+set3 = {True, False, False}
+set4 = {'hakim', 35, True, 999, 'male'}
+
+print(type(set4))
+print("-------------------")
+# The set() Constructor
+thisSet = set(('apple', 'banana', 'cherry'))
+print(thisSet)
+
+print("-------------------")
+# Access Set Items
+"""
+You cannot access items in a set by referring to an index or a key.
+But you can loop through the set items using a for loop, or ask if a
+specified calue is present in a set, by using the in keyword.
+Once a set is created, you cannot change its items, but you can add new
+Items.
+"""
+for x in thisSet:
+    print(x)
+print("-------------------")
+
+print('banana' in thisSet)
+print('banana' not in thisSet)
+print("-------------------")
+
+# Add Set Items
+
+thisSet.add('blubery')
+print(thisSet)
+print("-------------------")
+
+mySet = {'orange', 'pineapple', 'mango'}
+thisSet.update(mySet)
+print(thisSet)
+print("-------------------")
+
+mySet = ['kiwi', 'melon', 'apple']
+thisSet.update(mySet)
+print(thisSet)
+print("-------------------")
+
+# Remove Set Items
+
+thisSet.remove('mango')
+print(thisSet)
+print("-------------------")
+# Note: If the item to remove does not exist, remove(). will raise an error.
+
+thisSet.discard('blubery')
+print(thisSet)
+print("-------------------")
+
+# Note: If item to remove does not exist, discard(). will NOT raise an error.
+
+# Loop Sets
+i = 1
+for x in thisSet:
+    print(f"{i} : {x}")
+    i = i+1
+del i
+print("-------------------")
+
+# Join Sets
+"""
+There are several ways to join two or more sets in Python.
+The union() an update() methods joins all items from both sets.
+The intersection() method keeps ONLY the duplicates.
+The difference() method keeps the items from the first set that are
+not in the other set(s).
+The symmetric_difference() method keeps all items except the duplicates.
+"""
+
+set1 = {'a', 'b', 'c'}
+set2 = {1, 2, 3}
+# set3 = set1.union(set2)
+
+# You can use the | operator instead of the union() method, and you will
+# get the same result.
+set3 = set1 | set2
+print(set3)
+print("-------------------")
+
+# Join Multiple Sets
+
+set1 = {'a', 'b', 'c'}
+set2 = {1, 2, 3}
+set3 = {'john', 'elena'}
+set4 = {'apple', 'banana', 'cherry'}
+
+mySet = set1.union(set2, set3, set4)
+print(mySet)
+print("-------------------")
+
+
+mySet = set1 | set2 | set3 | set4
+print(mySet)
+print("-------------------")
+
+# Join a Set and a Tuple
+thisSet = {'a', 'b', 'c'}
+thisTuple = (1, 2, 3)
+thisTS = thisSet.union(thisTuple)
+print(thisTS)
+print("-------------------")
+
+# Update
+# Note: Both union() and update() will exclude any duplicate items.
+set1.update(set2)
+print(set1)
+print("-------------------")
+
+# Intersection
+# Keep ONLY the duplicates
+
+set1 = {'apple', 'banana', 'cherry'}
+set2 = {'google', 'microsoft', 'apple'}
+
+set3 = set1.intersection(set2)
+print(set3)
+print("-------------------")
+
+print(set1 & set2)
+print("-------------------")
+
+# Note: The & operator only allows you to join sets with sets,
+# and not with other data types like you can with intersection() method.
+
+set1.intersection_update(set2)
+print(set1)
+print("-------------------")
+
+set1 = {'apple', 1, 'banana', 0, 'cherry'}
+set2 = {False, 'google', 1, 'apple', 2, True}
+
+set3 = set1.intersection(set2)
+print(set3)
+print("-------------------")
+
+
+# Difference
+
+print(set1.difference(set2))
+print("-------------------")
+
+# You can use the - operator instead of the difference() method
+# and you will get the same result.
+
+set1 = {'apple', 'banana', 'cherry'}
+set2 = {'google', 'microsoft', 'apple'}
+
+set3 = set1 - set2
+print(set3)
+print("-------------------")
+
+# Symmetric Differences
+# The symmetric_difference() method will keep only the elements that
+# are NOT in both sets.
+
+set3 = set1.symmetric_difference(set2)
+print(set3)
+print("-------------------")
+
+set3 = set1 ^ set2
+print(set3)
+print("-------------------")
+
+# The symmetric_difference_update() method will also keep all but the
+# duplicates, but it will change the original set instead of returning a
+# a new set.
+
+set1.symmetric_difference_update(set2)
+print(set1)
+print("-------------------")
