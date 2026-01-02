@@ -1153,3 +1153,116 @@ print("-------------------")
 set1.symmetric_difference_update(set2)
 print(set1)
 print("-------------------")
+
+
+# Python frozenset
+"""
+frozenset is an immutable version of a set.
+like sets, it contains unique, unordered, unchangeable elements.
+Unlike sets, elements cannot be added or removed from a frozenset.
+"""
+
+x = frozenset({'apple', 'banana', 'cherry'})
+print(x)
+print(type(x))
+print("-------------------")
+
+y = frozenset({1, 2, 3, 4})
+print(x | y)
+print("-------------------")
+
+# 24- Python Dictionaries
+"""
+Dictionaries are used to store data values in key:value pairs.
+A dictionary is a collection which is ordered*, changeable and do not
+allow duplicates.
+"""
+thisDict = {
+    'brand' : 'ford',
+    'model' : 'Mustang',
+    'year' : 1964
+}
+
+print(thisDict)
+print("-------------------")
+
+# Dictionary Items
+print(thisDict["brand"])
+print("-------------------")
+
+thisDict = {
+    'brand' : 'ford',
+    'model' : 'mustang',
+    'year' : 1964,
+    'year' : 2020
+}
+
+print(thisDict)
+print("-------------------")
+
+print(len(thisDict))
+print("-------------------")
+
+thisDict = {
+    'brand' : 'ford',
+    'electric' : False,
+    'year' : 1964,
+    'colors': ['red', 'white', 'blue']
+}
+
+print(thisDict)
+print(type(thisDict))
+print("-------------------")
+
+thisDict = dict(name = 'john', age = 30, country = 'US')
+print(thisDict)
+print("-------------------")
+
+# Access Dictionary Items
+
+x = thisDict['name']
+print(x)
+print("-------------------")
+
+x = thisDict.get('country')
+print(x)
+print("-------------------")
+
+# Get Keys
+
+x = thisDict.keys()
+print(x)
+print("-------------------")
+
+car = {
+    'brand' : 'ford',
+    'model' : 'Mustang',
+    'year' : 1964
+}
+x = car.keys()
+print(x)
+car['color'] = ['black', 'red', 'white']
+print(x)
+print("-------------------")
+
+# Get Values
+
+x = car.values()
+print(x)
+car['year'] = 2020
+print(x)
+print("-------------------")
+
+
+# Get Items
+
+x = car.items()
+print(x)
+car['speed'] = 220
+print(x)
+print("-------------------")
+
+# Check if key Exists
+
+if 'model' in car :
+    print('Yes, \'model\' is one of the keys in the car dictionary')
