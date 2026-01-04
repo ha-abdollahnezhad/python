@@ -1266,3 +1266,170 @@ print("-------------------")
 
 if 'model' in car :
     print('Yes, \'model\' is one of the keys in the car dictionary')
+
+# Change Dictionary Items
+
+print(thisDict)
+thisDict['name'] = 'ali'
+print(thisDict)
+print("-------------------")
+
+thisDict.update({'country': 'iran'})
+print(thisDict)
+print("-------------------")
+
+# Adding Items
+
+thisDict['birth-date'] = '1380-01-10'
+print(thisDict)
+print("-------------------")
+
+thisDict.update({'born-city' : 'tehran'})
+print(thisDict)
+print("-------------------")
+
+# Remove Dictionary Items
+
+thisDict.pop('birth-date')
+print(thisDict)
+print("-------------------")
+
+thisDict.popitem()
+print(thisDict)
+print("-------------------")
+
+del thisDict['age']
+print(thisDict)
+print("-------------------")
+
+
+# del thisDict # The del keyword can also delete the dictionary completely.
+
+myDict.clear()
+print(myDict)
+print("-------------------")
+
+# Loop Dictionaries
+
+for x in thisDict.values():
+    print(x)
+for x in thisDict.keys():
+    print(x)
+print("-------------------")
+
+for x,y in thisDict.items():
+    print(f'{x} : {y}')
+print("-------------------")
+
+# Copy Dictionaries
+myDict = thisDict.copy()
+print(myDict)
+print("-------------------")
+
+myDict = dict(thisDict)
+print(myDict)
+print("-------------------")
+
+# Nested Dictionaries
+myCars = {
+    'BMW' : {
+        'color' : 'light-blue',
+        'model' : 'i8',
+        'year' : 2022
+    },
+    'ferari' : {
+        'color' : 'light-orange',
+        'model' : '580',
+        'year' : 2023
+    },
+    'ford' : {
+        'color' : 'white',
+        'model' : 'mustang',
+        'year' :2025
+    }
+}
+print(myCars)
+print("-------------------")
+
+print(myCars['ford']['model'])
+print("-------------------")
+
+# Loop Through Nested Dictionaries
+for x, obj in myCars.items() :
+    print(x)
+    for y in obj :
+        print(y + ' : ', obj[y])
+print("-------------------")
+
+# 25- Python If Statement
+a = 33
+b = 33
+if a > b :
+    print("a is greater than b")
+elif a == b :
+    print('a and b are equal')
+print("-------------------")
+
+score = 55
+if score >= 90 :
+    print('Grade: A')
+elif score >= 80 :
+    print('Grade: B')
+elif score >= 70 :
+    print('Grade: C')
+elif score >= 60 :
+    print('Grade: D')
+else :
+    print('Grade: E')
+print("-------------------")
+
+# Short Hand If
+
+a = 5
+b = 4
+if a > b : print('a is greater than b')
+print("-------------------")
+
+# Short Hand If ... Else
+
+a = 2
+b = 313
+print('a') if a > b else print('b')
+print("-------------------")
+
+bigger = a if a > b else b
+print('bigger is : ', bigger)
+print("-------------------")
+
+a = 313
+b = 310
+print('A') if a > b else print('=') if a == b  else print('B')
+print("-------------------")
+
+# Python Logical Operators
+a = 200
+b = 33
+c = 300
+
+if a > b and c > a :
+    print('Both conditions are True')
+if a > b or a > c :
+    print('At least one of the conditions is True')
+if not a > b :
+    print('a is NOT greater than b')
+print("-------------------")
+
+age = 25
+is_student = False
+has_discount_code = True
+
+if(age < 18 or age > 65) and not is_student or has_discount_code:
+    print("discount applies!")
+print("-------------------")
+
+temperature = 25
+is_raining = False
+is_weekend = True
+
+if(temperature > 20 and not is_raining) or is_weekend:
+    print('Great day for outdoor activities!')
