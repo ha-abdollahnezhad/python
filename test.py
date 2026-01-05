@@ -1433,3 +1433,123 @@ is_weekend = True
 
 if(temperature > 20 and not is_raining) or is_weekend:
     print('Great day for outdoor activities!')
+
+print("-------------------")
+username = 'Hamed'
+password = 'secret123'
+is_verified = True
+
+if username and password and is_verified :
+    print('Login successful')
+else :
+    print('Login Failed')
+print("-------------------")
+
+score = 85
+attendance = 90
+submitted = True
+
+if score >= 60 :
+    if attendance >= 80 :
+        if submitted :
+            print('Pass with good standing')
+        else :
+            print('Pass but missing assignment')
+    else :
+        print('Pass but low attendance')
+else :
+    print('Fail!')
+print("-------------------")
+
+# Python Pass Statement
+value = 50
+if value < 0 :
+    print('Negative value')
+elif value == 0 :
+    pass
+else :
+    print('Positive value')
+print("-------------------")
+
+# 26- Python Match
+
+# The Python Match Statement
+
+day = 7
+match day :
+    case 1:
+        print('Monday')
+    case 2:
+        print('Tuseday')
+    case 3:
+        print('Wednesday')
+    case 4:
+        print('Thursday')
+    case 5:
+        print('Friday')
+    case 6:
+        print('Saturday')
+    case 7:
+        print('Sunday')
+    case _:
+        print('Not Week Day')
+print("-------------------")
+
+day = 4
+match day :
+    case 1 | 2 | 3 | 4 | 5:
+        print('Today is a weekday')
+    case 6 | 7:
+        print('I Love weekends!')
+print("-------------------")
+
+month = 5
+day = 4
+match day:
+    case 1 | 2 | 3 | 4 | 5 | 6 | 7 if month == 4:
+        print('A weekday in April')
+    case 1 | 2 | 3 | 4 | 5 | 6 | 7 if month == 5:
+        print('A weekday in May')
+    case _:
+        print('NOT a weekday')
+print("-------------------")
+
+# 27- Python Loops
+# The while Loop
+
+i = 1
+while i < 6 :
+    print(i)
+    i += 1
+print("-------------------")
+
+# The break Statement
+i = 1
+while i < 6 :
+    print(i)
+    if i == 3 :
+        break
+    i += 1
+print("-------------------")
+
+# The continue Statement
+i = 0
+while i < 6 :
+    i += 1
+    if i == 3 :
+        continue
+    print(i)
+print("-------------------")
+
+# The else Statement
+i = 8
+while i < 6 :
+    print(i)
+    i += 1
+else :
+    print('i is no longer less than 6')
+print("-------------------")
+
+# Note: The else block will NOT be executed
+# if the loop is stopped by a break statement.
+
