@@ -1611,3 +1611,22 @@ print("-------------------")
 for x in [0, 1, 2]:
     pass
 print("-------------------")
+
+# 29- Python Functions
+def my_function():
+    print('hello every body')
+
+my_function()
+print("-------------------")
+
+def fahrenheit_to_celsius(fahrenheit):
+    return (fahrenheit - 32) * 5 / 9
+
+print(fahrenheit_to_celsius(77))
+print("-------------------")
+
+def my_function():
+    pass
+
+my_function()
+print("-------------------")
