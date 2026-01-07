@@ -1630,3 +1630,156 @@ def my_function():
 
 my_function()
 print("-------------------")
+
+# Python Function Arguments
+def my_function(name): # name is a parameter
+    print('Hello, Welcome', name)
+my_function('hamed') # hamed is an argument
+print("-------------------")
+
+# Number of Arguments
+def my_function(fname, lname) :
+    print(fname + " " + lname)
+my_function('hamed', 'abdollahnezhad')
+print("-------------------")
+
+# my_function('vahid') # you will get an error
+
+# Default Parameter Values
+def my_function(name = 'friend'):
+    print('hello', name)
+my_function('hamed')
+my_function()
+print("-------------------")
+
+# Keyword Arguments
+# the order of the arguments does not matter.
+print("-------------------")
+def my_function(car, model):
+    print('i have a ', car)
+    print('my ',car ,' model is ',model)
+
+my_function(car='pride', model='151')
+
+# Positional Arguments
+# The order matters with positional arguments
+def my_function(car, model):
+    print('i have a', car)
+    print('my ', car, 'model is', model)
+my_function('pride', '151')
+print("-------------------")
+
+# Mixing Positional and Keyword Arguments
+# However, positional arguments must come before keyword arguments
+def my_function(car, model, production_date):
+    print('i have a', car, 'model is ', model, ', production date is ', production_date)
+my_function('pride', model='151', production_date='1401-8-30')
+print("-------------------")
+
+# Passing Different Data Types
+def my_function(fruits):
+    for fruit in fruits:
+        print(fruit)
+my_fruits = ['apple', 'banana', 'cherry', 'mango']
+my_function(my_fruits)
+print("-------------------")
+
+def my_function(person):
+    print('Name is : ', person['name'])
+    print('Age is : ', person['age'])
+my_person = {'name':'ali', 'age':'25'}
+my_function(my_person)
+print("-------------------")
+
+# Return Values
+def my_function(x, y):
+    return x + y
+result = my_function(5, 3)
+print(result)
+print("-------------------")
+
+# Returning Different Data Types
+
+def my_function():
+    return ['apple', 'banana', 'cherry']
+fruits = my_function()
+print(fruits[0], fruits[1], fruits[2])
+print("-------------------")
+
+def my_function():
+    return (10, 20)
+x, y = my_function()
+print('x :', x)
+print('y :', y)
+print("-------------------")
+
+# Positional-Only Arguments
+# To specify positional-only arguments, add , / after the arguments
+def my_function(name, /):
+    print('Hello,', name)
+my_function('Hamed')
+print("-------------------")
+
+# Keyword-Only Arguments
+# To specify that a function can have only keyword arguments
+# , add *, before the arguments
+
+def my_function(*, name):
+    print('Hello,', name)
+my_function(name = 'Hamed')
+print("-------------------")
+
+# Combining Positional-Only and Keyword-Only
+# Arguments before / are positional-only, and
+# arguments after * are keyword-only
+
+def my_function(a, b, /, *, c, d):
+    return a + b + c + d
+result = my_function(5, 10, c = 15, d = 20)
+print(result)
+print("-------------------")
+
+# Python *args and **kwargs
+# If you do not know how many arguments will be passed into your
+# function, add a * before the parameter name.
+def my_function(*kids):
+    print('kids name\'s are : ')
+    for kid in kids:
+        print(kid)
+
+my_function('emil', 'tobias', 'linus')
+print("-------------------")
+
+# Using *args with Regular Arguments
+# Regular parameters must come before *args
+
+def my_function(greeting, *names):
+    for name in names:
+        print(greeting, name)
+my_function('Hello', 'ali', 'hojat', 'hadi', 'karim')
+print("-------------------")
+
+def my_function(*numbers):
+    total = 0
+    for num in numbers:
+        total += num
+    return total
+print(my_function(1, 2, 3))
+print(my_function(10, 20, 30, 40))
+print(my_function(5))
+print("-------------------")
+
+def my_function(*numbers):
+    if len(numbers) == 0:
+        return None
+    max_num = numbers[0]
+    for num in numbers:
+        if num > max_num :
+            max_num = num
+    return max_num
+
+print(my_function(1, 2, 3, 8, 35, 10, 15, 20))
+print("-------------------")
+
+# Arbitrary Keyword Arguments - **kwargs
+
