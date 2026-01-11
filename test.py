@@ -1783,3 +1783,201 @@ print("-------------------")
 
 # Arbitrary Keyword Arguments - **kwargs
 
+def my_function(**kids):
+    print('First name: ' + kids['fname'] + ' | Last name: ' + kids['lname'] + ' | age :' , kids['age'])
+
+my_function(fname = 'ali', lname = 'hoseini', age = 18)
+print("-------------------")
+
+
+# **kwargs with Regular Arguments
+
+def my_function(username, **details):
+    print('Username :', username)
+    print('Aditional details:')
+    for key , value in details.items():
+        print(' ', key + ':', value)
+my_function('hamed123', age = 30, city = 'tehran', hobby = 'coding')
+print("-------------------")
+
+# Combining *args and **kwargs
+# The order must be :
+# 1.regular parameter - 2.*args - 3.**kwargs
+def my_function(title, *args, **kwargs):
+    print('titel :', title)
+    print('positional arguments :', args)
+    print('keyword arguments :', kwargs)
+
+my_function('User Info', 'Email : hamed@email.com', 'city : Tehran', 40, age = 30, work_title = 'programmer', work_start = '1390-02-01')
+print("-------------------")
+
+
+# Unpacking Arguments
+# Unpacking Lists with *
+
+def my_function(a, b, c):
+    return a + b + c
+numbers = [1, 2 ,3]
+result = my_function(*numbers)
+print('the result is :',result)
+print("-------------------")
+
+# Unpacking Dictionaries with **
+def my_function(fname, lname, age):
+    print('Hello', fname, lname, age, ' year\'s old')
+person = {'fname' : 'hamed', 'lname' : 'alavi', 'age' : '30'}
+my_function(**person)
+print("-------------------")
+
+# Python Scope
+# A variable is only available from inside the
+# region it is created. This is called scope.
+
+# Local Scope
+x = 999
+def my_func():
+    x = 300
+    print(x)
+my_func()
+print(x)
+print("-------------------")
+
+def myFunc():
+    x = 100
+    def myInnerFunc():
+        print(x)
+    myInnerFunc()
+myFunc()
+print("-------------------")
+
+x = 500
+def myFunc():
+    print(x)
+
+myFunc()
+print(x)
+print("-------------------")
+
+# Global Keyword
+# If you need to create a global variable, but are stuck in
+# the local scope, you can use the global keyword.
+# the global keyword makes the variable global.
+
+def myFunc():
+    global x 
+    x = 777
+myFunc()
+print(x)
+print("-------------------")
+
+# Nonlocal Keyword
+# The nonlocal keyword is used to work with variables inside 
+# nested functions.
+# The nonlocal keyword makes the variable belong to the
+# outer function. 
+
+def myFunc1():
+    x = 'hamed'
+    def myFunc2():
+        nonlocal x 
+        x = 'hello'
+    myFunc2()
+    return x 
+print(myFunc1())
+print("-------------------")
+
+# The LEGB Rule
+'''
+Python follows the LEGB rule when looking up variable names,
+and searches for them in this order:
+1. Local - Inside the current function
+2. Enclosing - Inside enclosing functions (from inner to outer)
+3. Global - At the top level of the module
+4. Built-in - In Pytho's built-in namespace
+'''
+x = 'global'
+def outer():
+    x = 'enclosing'
+    def inner():
+        x = 'local'
+        print('Inner:', x)
+    inner()
+    print('Outer:', x)
+outer()
+print('Global:', x)
+print("-------------------")
+
+# Python Decorators
+'''
+Decorators let you add extra behavior to a function,
+without changing the function's code.
+A decorator is a function that takes another function
+as input and returns a new function.
+'''
+# Basic Decorator
+# Define the decorator first, then apply it with @decorator_name
+# above the function.
+
+def changecase(func):
+    def myInner():
+        return func().upper()
+    return myInner
+
+@changecase
+def myFunction():
+    return 'Hello Hamed'
+print(myFunction())
+print("-------------------")
+
+'''
+By placing @changecase directly above the function definition,
+the function myfunction is being "decorated" with the 
+changecase function.
+The function changecase is the decorator.
+The function myfunction is the function that gets decorated.
+'''
+
+# Multiple Decorator Calls
+# A decorator can be called multiple times. Just place the
+# decorator above the function you want to decorate.
+
+def changecase(func):
+    def myInner():
+        return func().upper()
+    return myInner
+
+@changecase
+def myFunction():
+    return 'Hello Hamed'
+
+@changecase
+def otherFunction():
+    return 'I am speed!'
+print(myFunction())
+print(otherFunction())
+
+# Multiple Decorators
+'''
+You can use multiple decorators on one function.
+This is done by placing the decorator calls on top of each other.
+Decorators are called in the reverse order, starting with the
+one closest to the
+'''
+def changecase(func):
+    def myInner():
+        return func().upper()
+    return myInner
+
+def addGreeting(func):
+    def myInner():
+        return 'Hello ' + func() + ' Have a good day!'
+    return myInner
+
+
+@changecase
+@addGreeting
+def myFunction():
+    return 'Hamed'
+print(myFunction())
+print("-------------------")
+
