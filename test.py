@@ -1973,7 +1973,6 @@ def addGreeting(func):
         return 'Hello ' + func() + ' Have a good day!'
     return myInner
 
-
 @changecase
 @addGreeting
 def myFunction():
@@ -1981,3 +1980,44 @@ def myFunction():
 print(myFunction())
 print("-------------------")
 
+# Preserving Function Metadata
+# Functions in Python has metadata that can be accessed
+# using the __name__ and __doc__ attributes.
+# But, when a function is decorated, the metadata of the original
+# function is lost.
+# To fix this, Python has a built-in function called
+# functools.wraps that can be used to preserve the original
+# function's name and docstring.
+
+def myFunction():
+    return 'Have a greate day!'
+print(myFunction.__name__)
+print("-------------------")
+
+def changecase(func):
+    def myInner():
+        return func().upper()
+    return myInner
+
+@changecase
+def myFunction():
+    return 'Have a greate day!'
+
+print(myFunction.__name__)
+print(myFunction())
+print("-------------------")
+
+import functools
+
+def changecase(func):
+    @functools.wraps(func)
+    def myInner():
+        return func().upper()
+    return myInner
+
+@changecase
+def myFunction():
+    return 'Have a greate day !'
+
+print(myFunction.__name__)
+print("-------------------")
