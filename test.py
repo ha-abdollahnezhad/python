@@ -2021,3 +2021,70 @@ def myFunction():
 
 print(myFunction.__name__)
 print("-------------------")
+
+# Python Lambda
+# A lambda function is a small anonymous function.
+# A lambda function can take any number of arguments, but
+# can only have one expression.
+
+x = lambda a : a + 10
+print(x(5))
+print("-------------------")
+
+x = lambda a, b : a * b
+print(x(10, 10))
+print("-------------------")
+
+x = lambda a, b, c : a + b + c
+print(x(1, 2, 3))
+print("-------------------")
+
+def myFunction(n):
+    return lambda a : a * n
+
+myDoubler = myFunction(2)
+print(myDoubler(20))
+print("-------------------")
+
+myTripler = myFunction(3)
+print(myTripler(10))
+print("-------------------")
+
+# Lambda with Built-in Function
+# Using Lambda with map()
+
+numbers = [1, 2, 3, 4, 5]
+doubled = list(map(lambda x : x * 2, numbers))
+print(doubled)
+print("-------------------")
+
+# Using Lamba with filter()
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8]
+odd_numbers = list(filter(lambda x : x % 2 != 0, numbers))
+print(odd_numbers)
+print("-------------------")
+
+# Using Lambda with sorted()
+
+students = [('emil', 25), ('tobias', 22), ('linus', 28)]
+sorted_students = sorted(students, key = lambda x : x[1])
+print(sorted_students)
+print("-------------------")
+
+words = ['apple', 'pie', 'banana', 'cherry']
+sorted_words = sorted(words, key = lambda x : len(x))
+print(sorted_words)
+
+# Python Recursion
+# Recursion is when a function calls itself.
+
+def countdown(n):
+    if n <= 0 :
+        print('done!')
+    else:
+        print(n)
+        countdown(n - 1)
+
+countdown(10)
+print("-------------------")
