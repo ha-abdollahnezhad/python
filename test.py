@@ -2139,8 +2139,201 @@ def find_max(numbers):
         return numbers[0]
     else:
         max_of_rest = find_max(numbers[1:])
+        print(f'numbers[0] : {numbers[0]} , numbers[1:] : {numbers[1:]} , max : {max_of_rest}')
         return numbers[0] if numbers[0] > max_of_rest else max_of_rest
 myList = [3, 7, 2, 9, 1]
 print(find_max(myList))
 print("-------------------")
 
+def walk(steps):
+    if steps <= 0:
+        return
+    else:
+        walk(steps - 1)
+        print(f'You take step #{steps}')
+
+walk(100)
+print("-------------------")
+
+# Recursion Depth Limit
+# Python has a limit on how deep recursion can go. The default
+# limit is usually around 1000 recursive calls.
+
+import sys
+print(sys.getrecursionlimit())
+print("-------------------")
+
+# If you need deeper recursion, you can increase the limit, but
+# be careful as this can cause crashes:
+
+sys.setrecursionlimit(2000)
+print(sys.getrecursionlimit())
+print("-------------------")
+
+# Note: Increasing the recursion limit should be done with caution.
+# For very deep recursion, consider using iteration instead.
+
+# Python Generators
+'''
+Generator are functions that can pause and resume their execution.
+When a generator function is called, it returns a generator object,
+which is an iterator.
+The code inside the function is not executed yet, it is only compiled.
+The function only executes when you iterate over the generator.
+'''
+
+def my_generator():
+    yield 1
+    yield 2
+    yield 3
+for value in my_generator():
+    print(value)
+print("-------------------")
+
+'''
+Generators allow you to iterate over data without storing the
+entire dataset in memory.
+Instead of using return, generators use the yield keyword.
+'''
+# The yield keyword
+'''
+The yield keyword is what makes a function a generator.
+When yield is encountered, the function's state is saved,
+and the value is returned. The next time the generator is called,
+it continues from where it left off.
+'''
+
+def count_up_to(n):
+    count = 1
+    while count <= n:
+        yield count
+        count += 1
+
+for num in count_up_to(5):
+    print(num)
+print("-------------------")
+
+'''
+Unlike return, which terminates the function, yield pauses it
+and can be called multiple times.
+'''
+
+# Generators Saves Memory
+'''
+Generators are memory-efficient because they generate values 
+on-the-fly instead of storing everything in memory.
+
+For large datasets, generators save memory:
+'''
+
+def large_sequence(n):
+    for i in range(n):
+        yield i
+# This does't create a million numbers in memory
+gen = large_sequence(1000000)
+print(next(gen))
+print(next(gen))
+print(next(gen))
+print(next(gen))
+print("-------------------")
+
+# Using next() with Generators
+'''
+You can manually iterate through a generator using the next()
+function:
+'''
+def simple_gen():
+    yield 'hamed'
+    yield 'ali'
+    yield 'majid'
+gen = simple_gen()
+print(next(gen))
+print(next(gen))
+print(next(gen))
+print("-------------------")
+
+# When there are no more values to yield, the generator raises
+# a StopIteration exception:
+
+def simple_gen():
+    yield 1
+    yield 2
+gen = simple_gen()
+print(next(gen))
+print(next(gen))
+#print(next(gen))
+print("-------------------")
+
+# Generator Expressions
+'''
+Similar to list comprehensions, you can create generators using
+generator expressions with parentheses instead of square brackets:
+'''
+# List comprehension - creates a list
+list_comp = [x * x for x in range(5)]
+print(list_comp)
+
+# Generator expression - creates a generator
+gen_exp = (x * x for x in range(5))
+print(gen_exp)
+print(list(gen_exp))
+print("-------------------")
+
+# Example
+# Using a generator expression with sum:
+
+# Calculate sum of squares without creating a list
+total = sum(x * x for x in range(10))
+print(total)
+print("-------------------")
+
+# Fibonacci Sequence Generator
+
+'''
+Generators can be used to create the fibonacci sequence.
+It can continue generating values indefinitely, whithout running
+out of memory:
+'''
+
+def fibonacci():
+    a, b = 0, 1
+    while True:
+        yield a
+        a, b = b, a + b
+# Get first 100 fibonacci numbers
+gen = fibonacci()
+for _ in range(100):
+    print(next(gen))
+print("-------------------")
+
+# Generator Methods
+# send() Method
+# The send() method allows you to send a value to the generator:
+
+def echo_generator():
+    while True:
+        received = yield
+        print('Received:', received)
+
+gen = echo_generator()
+next(gen) # Prime the generator
+gen.send('Hello')
+gen.send('World')
+print("-------------------")
+
+# close() Method
+# The close() method stops the generator:
+
+def my_gen():
+    try:
+        yield 1
+        yield 2
+        yield 3
+    finally:
+        print('Generator closed')
+gen = my_gen()
+print(next(gen))
+gen.close()
+print("-------------------")
+
+# Python range
