@@ -2336,4 +2336,556 @@ print(next(gen))
 gen.close()
 print("-------------------")
 
-# Python range
+# 30-Python range
+'''
+The built-in range() function returns an immutable sequence of
+numbers, commonly used for looping a specific number of times.
+This set of numbers has its own data type called range.
+Note : Immutable means that it cannot be modified after it is
+created.
+'''
+
+# Creating ranges
+# range(start, stop, step)
+
+x = range(10)
+print(x)
+for i in x:
+    print(i)
+print("-------------------")
+
+x = range(3, 10)
+print(x)
+for i in x:
+    print(i)
+print("-------------------")
+
+x = range(0, 20, 2)
+print(x)
+for i in x:
+    print(i)
+print("-------------------")
+
+print(list(x))
+print(list(range(0, 20, 4)))
+print("-------------------")
+
+x = range(10)
+print(x[2])
+print(x[:3])
+print("-------------------")
+
+# Membership Testing
+
+r = range(0, 10, 2)
+print(6 in r)
+print(7 in r)
+print("-------------------")
+
+r = range(0, 10, 2)
+print('The length of r :',len(r))
+print("-------------------")
+
+# 31-Python Array
+# Note: Python does not have built-in support for Arrays,
+# but Python Lists can be used instead.
+
+cars = ['Ford', 'Volvo', 'BMW']
+print(len(cars))
+print("-------------------")
+
+for x in cars:
+    print(x)
+print("-------------------")
+
+cars.append('Honda')
+print(cars)
+print("-------------------")
+
+carItem = cars.pop(0)
+print(carItem)
+print("-------------------")
+
+cars.remove('Volvo')
+print(cars)
+print("-------------------")
+
+# 32-Python Iterators
+'''
+An iterator is an object that can be iterated upon, meaning that
+you can traverse through all the values.
+
+Technically, in Python, an iterator is an object which implements
+the iterator protocol, which consist of the methods __iter__() 
+and __next__().
+'''
+
+# Iterator vs Iterable
+'''
+Lists, tuples, dictionaries, and sets are all iterable objects.
+They are iterable containers which you can get an iterator from.
+All these objects have a iter() method which is used to get an
+iterator:
+'''
+myTuple = ('apple', 'banana', 'cherry')
+myIt = iter(myTuple)
+
+print(next(myIt))
+print(next(myIt))
+print(next(myIt))
+print("-------------------")
+
+# Even strings are iterable object, and can return an iterator:
+
+myStr = 'Hamed'
+myIt = iter(myStr)
+print(next(myIt))
+print(next(myIt))
+print(next(myIt))
+print(next(myIt))
+print(next(myIt))
+print("-------------------")
+
+# Looping Through an Iterator
+
+myTuple = ('apple', 'banana', 'cherry', 'mango', 'melon')
+for x in myTuple:
+    print(x)
+print("-------------------")
+
+myStr = 'Abdollahnezhad'
+for x in myStr:
+    print(x)
+print("-------------------")
+
+# Create an Iterator
+'''
+To create an object/class as an iterator you have to implement
+the methods __iter__() and __next__() to your object.
+
+As You Will learn in the Python Classes/Objects chapter, all
+classes have a function called __init__(), which allows you to
+do some initializing when the object is being created.
+
+The __iter__() method acts similar, you can do operations
+(initializing etc.), but must always return the iterator object
+itself.
+
+The __next__() method also allows you to do operations, and must
+return the next item in the sequence.
+'''
+class MyNumbers:
+    def __iter__(self):
+        self.a = 1
+        return self
+    
+    def __next__(self):
+        x = self.a
+        self.a += 1
+        return x
+    
+myClass = MyNumbers()
+myIter = iter(myClass)
+
+print(next(myIter))
+print(next(myIter))
+print(next(myIter))
+print(next(myIter))
+print("-------------------")
+
+# StopIteration
+'''
+The example above would continue forever if you had enough next()
+statements, or if it was used in a for loop.
+
+To prevent the iteration from going on forever, we can use the
+StopIteration statement.
+
+In the __next__() method, we can add a terminating condition to
+raise an error if the iteration is done a specified number of times:
+
+'''
+class MyNumbers:
+    def __iter__(self):
+        self.a = 1
+        return self
+    def __next__(self):
+        if self.a <= 20 :
+            x = self.a
+            self.a += 1
+            return x
+        else :
+            raise StopIteration
+myClass = MyNumbers()
+myIter = iter(myClass)
+
+for x in myIter:
+    print(x)
+print("-------------------")
+
+# 33-Python Modules
+'''
+What is a Module?
+Consider a module to be the same as a code library.
+A file containing a set of functions you want to include in
+your application.
+'''
+# Create a Module
+# To create a module just save the code you want in a file
+# with the file extension .py:
+
+import myModule
+myModule.greeting('Hamed')
+print("-------------------")
+
+# Variables in Module
+'''
+The module can contain functions, as already described, but also
+variables of all types
+(arrays, dictionaries, objects etc):
+'''
+a = myModule.person['age']
+print(a)
+print("-------------------")
+
+# Naming a Module
+# You can name the module file whatever you like, but it must
+# have the file extension .py
+
+# Re-naming a Module
+# You can create an alias when you import a module, by using the
+# as keyword:
+
+import myModule as md
+a = md.person['name']
+print(a)
+print("-------------------")
+
+# Built-in Modules
+
+import platform
+x = platform.system()
+print(x)
+print("-------------------")
+
+x = dir(platform)
+print(x)
+print("-------------------")
+
+# Note : The dir() function can be used on all modules, also the
+# ones you create yourself.
+
+# Import From Module
+# You can choose to import only parts from a module, by using
+# the from keyword.
+
+from myModule import person
+
+print(person)
+print("-------------------")
+
+'''
+Note : When importing using the from keyword, do not use the 
+module name when referring to elements in the module. 
+Example:
+person['age']
+not myModule.person['age']
+'''
+
+# 34-Python Datetime
+'''
+Python Dates
+A date in python is not a data type of its own, but we can import
+a module named datetime to work with dates as date objects.
+'''
+
+import datetime
+x = datetime.datetime.now()
+print(x)
+print("-------------------")
+
+# Date Output
+'''
+When we execute the code from the example above the result
+will be :
+2026-01-19 10:49:31.262377
+
+The date contains year, month, day, hour, minute, second and microsecond.
+
+The datetime module has many methods to return information about the
+date object.
+
+Here are a few examples, you will learn more about them later in this chapter:
+'''
+
+x = datetime.datetime.now()
+print(x.year)
+print(x.strftime('%A'))
+print("-------------------")
+
+# Creating Date Objects
+# To Create a date, we can use the datetime() class (constructor)
+# of the datetime module.
+
+# The datetime() class requires three parameters to create a date:
+# year, month, day.
+
+x = datetime.datetime(2020, 5, 17)
+print(x)
+print("-------------------")
+
+'''
+The datetime() class also takes parameters for time and timezone
+(hour, minute, second, microsecond, tzone), but they are optional,
+and has a default value of 0, (None for timezone).
+'''
+
+# The strftime() Method
+'''
+The datetime object has a method for formatting date objects
+into readable strings.
+
+The method is called strftime(), and takes one parameter, format
+to specify the format of returned string
+'''
+x = datetime.datetime(2018, 6, 1)
+print(x.strftime('%B'))
+print("-------------------")
+
+'''
+%a -> Weekday, short version
+%A -> Weekday, full version
+%w -> Weekday, as a number 0-6, 0 is Sunday
+%d -> Day of month 01-31
+%b -> Month name, short version
+%B -> Month name, full version
+%m -> Month as a number 01-12
+%y -> Year, short version, whithout century
+%Y -> Year, full version
+%H -> Hour 00-23
+%l -> Hour 00-12
+%p -> AM/PM
+%M -> Minute 00-59
+%S -> Second 00-59
+%f -> Microsecond 000000-999999
+%z -> UTC offset
+%Z -> Timezone
+%j -> Day number of year 001-366
+%U -> Week number of year, Sunday as the first day of week, 00-53
+%W -> Week number of year, Monday as the first day of week, 00-53
+%c -> Local version of date and time
+%C -> Century
+%x -> Local version of date
+%X -> Local version of time
+%% -> A % character
+%G -> ISO 8601 year
+%u -> ISO 8601 weekday (1-7)
+%V -> ISO 8601 weeknumber (01-53)
+'''
+# 35-Python Math
+
+# Built-in Math Functions
+x = min(5, 10, 27)
+y = max(5, 10, 27)
+print('min is :' , x)
+print('max is :' , y)
+print("-------------------")
+
+x = abs(-7.25)
+print(x)
+print("-------------------")
+
+x = pow(4, 3)
+print(x)
+print("-------------------")
+
+# The Math Module
+
+import math
+x = math.sqrt(64)
+print('square root of 64 is :', x)
+print("-------------------")
+
+'''
+The math.ceil() method rounds a number upwards to its nearest
+integer, and the math.floor() method rounds a number downwards
+to its nearest integer, and returns the result:
+'''
+
+x = math.ceil(1.4)
+y = math.floor(1.4)
+print(x)
+print(y)
+print("-------------------")
+
+x = math.pi
+print('PI constant is :', x)
+print("-------------------")
+
+# 36-Python JSON
+'''
+JSON is a syntax for storing and exchanging data.
+JSON is text, written with JavaScript object notation.
+'''
+
+# JSON in Python
+# Python has a built-in package called json, which can be used
+# to work with JSON data.
+
+# Parse JSON - Convert from JSON to Python
+# If you have a JSON string, you can parse it by using the
+# json.loads() method.
+# The result will be a Python dictionary.
+
+import json
+
+x = '{ "name" : "Hamed", "age" : 30, "city" : "Tehran" }'
+y = json.loads(x)
+print(y['name'])
+print("-------------------")
+
+# Convert from Python to JSON
+# If you have a Python object, you can convert it into a JSON
+# string by using the json.dumps() method.
+
+x = {
+    'name' : 'ali',
+    'age' : 35,
+    'city' : 'Tehran'
+}
+
+y = json.dumps(x)
+print(y)
+print("-------------------")
+
+'''
+You can convert Python objects of the following types, into JSON string:
+* dict
+* list
+* tuple
+* string
+* int
+* float
+* True
+* False
+* None
+'''
+
+print(json.dumps({'name': 'Hamed', 'age' : 30}))
+print(json.dumps(['Hamed', 'Ali', 'Hassan']))
+print(json.dumps(('kia', 'honda', 'toyota')))
+print(json.dumps('hello'))
+print(json.dumps(42))
+print(json.dumps(31.74))
+print(json.dumps(True))
+print(json.dumps(False))
+print(json.dumps(None))
+print("-------------------")
+
+'''
+When you convert from python to JSON, Python objects are converted
+into the JSON (JavaScript) equivalent:
+Python -> JSON
+dict -> Object
+list -> Array
+tuple -> Array
+str -> String
+int -> Number
+float -> Number
+True -> true
+False -> false
+None -> null
+'''
+import json
+x = {
+    'name' : 'Hamed',
+    'age' : 30,
+    'married' : False,
+    'divorced' : False,
+    'children' : None,
+    'pets' : None,
+    'cars' : [
+        {'company' : 'Toyota', 'model' : 'Landcruiser'},
+        {'company' : 'Honda', 'model' : 'CR-V e:FCEV'}
+    ]
+}
+
+print(json.dumps(x))
+print("-------------------")
+
+# Format the Result
+'''
+The example above prints a JSON string, but it is not very easy
+to read, with no indentations and line breaks.
+The json.dumps() method has parameters to make it easier to read
+the result:
+'''
+
+json.dumps(x, indent = 4)
+
+'''
+You can also define the separators, default value is (",",": d"),
+which means using a comma and a space to separate each object,
+and a colon and a space to separate keys from values:
+Use the separators parameter to change default separator:
+'''
+
+
+print(json.dumps(x, indent=4, separators=(". ", " = ")))
+print("-------------------")
+
+# Order the Result
+# The json.dumps() method has parameters to order the keys in
+# the result:
+
+# Use the sort_key parameter to specify if the result shold be
+# sorted or not:
+
+x = json.dumps(x, indent=4, sort_keys=True)
+print(x)
+print("-------------------")
+
+# 37-Python RegEx
+'''
+A RegEx, or Regular Expression, is a sequence of characters that
+forms a search patter.
+RegEx can be used to check if a string contains the specified search pattern.
+'''
+# RegEx Module
+'''
+Python has a built-in package called re, which can be used
+to work with Regular Expressions.
+'''
+# Search the string to see if it starts
+# with "The" and ends with "Tehran":
+import re
+txt = 'The snow in Tehran'
+x = re.search('^The.*Tehran$', txt)
+print(x)
+print("-------------------")
+
+# RegEx Functions
+
+# The re module offers a set of functions that allows us to
+# search a string for a match: 
+
+'''
+Function -> Description
+findall -> Returns a list containing all matches
+search -> Returns a Match object if there is a match anywhere in the string
+split -> Returns a list where the string has been split at each match
+sub -> Replaces one or many matches with a string
+'''
+
+# Metacharacters
+'''
+Character -> Description -> Example
+[] -> Aset of characters -> "[a-m]"
+\ -> Signals a special sequence(can also be used to escape special characters) -> "\d"
+. -> Any character (except newline character) -> "he..o"
+^ -> Start with -> "^hello"
+$ -> End with -> "planet$"
+* -> Zero or more occurrences -> "he.*o"
++ -> One or more occurrences -> "he.+o"
+? -> Zero or one occurrences -> "he.?"
+'''
