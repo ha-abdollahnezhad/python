@@ -2878,20 +2878,20 @@ sub -> Replaces one or many matches with a string
 '''
 
 # Metacharacters
-'''
-Character -> Description -> Example
-[] -> Aset of characters -> "[a-m]"
-\ -> Signals a special sequence(can also be used to escape special characters) -> "\d"
-. -> Any character (except newline character) -> "he..o"
-^ -> Start with -> "^hello"
-$ -> End with -> "planet$"
-* -> Zero or more occurrences -> "he.*o"
-+ -> One or more occurrences -> "he.+o"
-? -> Zero or one occurrences -> "he.?"
-{} -> Exactly the specified number of occurrences -> "he.{2}o"
-| -> Either of -> "falls|stays"
-() -> Capture and group
-'''
+
+#Character -> Description -> Example
+#[] -> Aset of characters -> "[a-m]"
+#\ -> Signals a special sequence(can also be used to escape special characters) -> "\d"
+#. -> Any character (except newline character) -> "he..o"
+#^ -> Start with -> "^hello"
+#$ -> End with -> "planet$"
+#* -> Zero or more occurrences -> "he.*o"
+#+ -> One or more occurrences -> "he.+o"
+#? -> Zero or one occurrences -> "he.?"
+#{} -> Exactly the specified number of occurrences -> "he.{2}o"
+#| -> Either of -> "falls|stays"
+#() -> Capture and group
+
 # Flags
 # You can add flags to the pattern when using regular expressions.
 
@@ -2910,21 +2910,21 @@ re.VERBOSE -> re.X -> Allow whitespaces and comments inside patterns. Make the p
 # Special Sequences
 # A special sequence is a \ followed by one of the characters in the list below, and has a special meaning:
 
-'''
-Character -> Description -> Example
-\A -> Returns a match if the specified characters are at the beginning of the string -> \AThe
-\b -> Returns a match where the specified characters are at the beginning or at the end of a word
-        (the "r" in the beginning is making sure that the string is being treated as a "raw string") -> r"\bain" | r"ain\b"
-\B -> Returns a match where the specified characters are present, but NOT at the beginning (or at the end) of a word
-        (the "r" in the beginning is making sure that the string is being treated as a "raw string") -> r"\Bain" | r"ain\B"
-\d -> Returns a match where the string contains digit (numbers from 0-9) -> "\d"
-\D -> Returns a match where the string DOES NOT contain digits -> "\D"
-\s -> Returns a match where the string contains a white space charater -> "\s"
-\S -> Returns a match where the string DOES NOT contain a white space character -> "\S"
-\w -> Returns a match where the string contains any word characters (characters from a to Z, digit from 0-9, and the underscore _ character) -> "\w"
-\W -> Returns a match where the string DOES NOT contain any word characters -> "\W"
-\Z -> Returns a match if the specified characters are at the end of the sitng -> "Spain\Z"
-'''
+
+#Character -> Description -> Example
+#\A -> Returns a match if the specified characters are at the beginning of the string -> \AThe
+#\b -> Returns a match where the specified characters are at the beginning or at the end of a word
+#        (the "r" in the beginning is making sure that the string is being treated as a "raw string") -> r"\bain" | r"ain\b"
+#\B -> Returns a match where the specified characters are present, but NOT at the beginning (or at the end) of a word
+#        (the "r" in the beginning is making sure that the string is being treated as a "raw string") -> r"\Bain" | r"ain\B"
+#\d -> Returns a match where the string contains digit (numbers from 0-9) -> "\d"
+#\D -> Returns a match where the string DOES NOT contain digits -> "\D"
+#\s -> Returns a match where the string contains a white space charater -> "\s"
+#\S -> Returns a match where the string DOES NOT contain a white space character -> "\S"
+#\w -> Returns a match where the string contains any word characters (characters from a to Z, digit from 0-9, and the underscore _ character) -> "\w"
+#\W -> Returns a match where the string DOES NOT contain any word characters -> "\W"
+#\Z -> Returns a match if the specified characters are at the end of the sitng -> "Spain\Z"
+
 
 # Sets
 # A set ia set of characters inside a pair of square brackets [] with a special meaning:
@@ -2961,7 +2961,7 @@ print("-------------------")
 
 import re
 txt = "The rain in IRAN"
-x = re.search('\s', txt)
+x = re.search(r'\s', txt)
 print("The first white-space character is located in position:", x.start())
 print("-------------------")
 
@@ -2974,14 +2974,14 @@ print("-------------------")
 
 import re
 txt = 'The rain in Iran'
-x = re.split('\s', txt)
+x = re.split(r'\s', txt)
 print(x)
 print("-------------------")
 
 # You can control the number of occurrences by specifying the
 # maxsplit parameter
 txt = 'The     rain     in      Iran'
-x = re.split('\s', txt, 10)
+x = re.split(r'\s', txt, 10)
 print(x)
 print("-------------------")
 
@@ -2989,13 +2989,13 @@ print("-------------------")
 # The sub() function replaces the matches with the text of your choice
 
 txt = 'The snow in Tehran'
-x = re.sub('\s', '.', txt)
+x = re.sub(r'\s', '.', txt)
 print(x)
 print("-------------------")
 
 # You can control the number of replacements by specifying the
 # count parameter
-x = re.sub('\s', '.', txt, 2)
+x = re.sub(r'\s', '.', txt, 2)
 print(x)
 print("-------------------")
 
@@ -3035,6 +3035,51 @@ print("-------------------")
 txt = 'In God We Trust, In The Name Of God'
 x = re.search(r'\bT\w+', txt)
 print(x.group())
+print("-------------------")
 
 # Note: If there is no match, the value None will be returned,
 # instead of the Match Object.
+
+# 38- Python PIP
+'''
+PIP is a package manager for Python packages, or modules if you like.
+Note: If you have Python version 3.4 or later, PIP is included by default.
+A package contains all the files you need for a module.
+Modules are Python code libraries you can include in your project.
+'''
+
+# Check if PIP is Installed
+# Navigate your command line to the location of python's script
+# directory, and type the pip --version
+
+# Download a Package
+'''
+Downloading a package is very easy.
+Open the command line interface and tell PIP to download the package you want.
+Navigate your command line to the location of Python's script directory,
+and type the :
+'''
+#C:\Users\4046412\AppData\Local\Programs\Python\Python314\Scripts>pip install camelcase
+'''
+Once the package is installed, it is ready to use.
+Import the 'camelcase' package into your project.
+'''
+
+import camelcase
+c = camelcase.CamelCase()
+txt = "hello every body"
+print(c.hump(txt))
+print("-------------------")
+
+# Find Packages
+# Find more packages at https://pypi.org/.
+
+# Remove a Package
+# Use the uninstall command to remove a package:
+#C:\Users\4046412\AppData\Local\Programs\Python\Python314\Scripts>pip uninstall camelcase
+
+
+# List Packages
+# Use the list command to list all the packages installed on your system
+#C:\Users\4046412\AppData\Local\Programs\Python\Python314\Scripts>pip list
+
