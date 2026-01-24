@@ -3081,5 +3081,292 @@ print("-------------------")
 
 # List Packages
 # Use the list command to list all the packages installed on your system
-#C:\Users\4046412\AppData\Local\Programs\Python\Python314\Scripts>pip list
+# C:\Users\4046412\AppData\Local\Programs\Python\Python314\Scripts>pip list
+
+# 39- Python Try Except
+'''
+The (try) block lets you test a block of code for errors.
+The (except) block lets you handel the error.
+The (else) block lets you execute code when there is no error.
+The (finally) blcok lets you execute code, regardless of the
+try- and except blocks.
+'''
+
+# Exception Handling
+'''
+When an error occurs, or exception as we call it, Python will
+normally stop and generate an error message.
+
+These exceptions can be handled using the try statement:
+The try block will generate an exeption, because k is not defined:
+'''
+try:
+    print(k)
+except:
+    print('An exception occurred')
+print("-------------------")
+
+'''
+Since the try block raises an error, the except block will be executed.
+Without the try block, the program will crash and raise an error
+'''
+
+# Many Exceptions
+'''
+You can define as many exception blocks as you want, e.g. if you
+want to execute a special block of code for a special kind of error
+
+Print one message if the try block raises a NameError and another error:
+'''
+try:
+    print(k)
+except NameError:
+    print('Variable k is not defined')
+except:
+    print('Something else went wrong')
+print("-------------------")
+
+# Else
+'''
+You can use the else keyword to define a block of code to be executed
+if no errors were raised:
+
+In this example, the try block does not generate any error:
+'''
+try :
+    print('hello')
+except :
+    print('Something went wrong')
+else :
+    print('Nothing went wrong')
+print("-------------------")
+
+# Finally
+'''
+The finally block, if specified, will be executed regardless if
+the block raises an error or not.
+'''
+
+try:
+    print(k)
+except:
+    print('something went wrong')
+finally:
+    print('The \'try except\' is finished')
+print("-------------------")
+
+# This can be useful to close objects and clean up resources:
+# Try to open and write to a file that is not writable:
+
+try:
+    f = open('demofile.txt', '+tw')
+    try:
+        f.write('Lourm Ipsum')
+    except:
+        print('Something went wrong when writing to the file')
+    finally:
+        f.close()
+except:
+    print('Something went wrong when opening the file')
+else: 
+    print('Writing is done!')
+
+# Raise an Exception
+'''
+As a Python developer you can choose to throw an exception if 
+a condition occurs.
+To throw (or raise) an exception, use the raise keyword.
+
+Raise an error and stop the program if x is lower than 0:
+
+'''
+
+# x = -1
+# if x < 0:
+#     raise Exception('Sorry, no number below zero')
+# print("-------------------")
+
+'''
+The raise keyword is used to raise an exception.
+You can define what kind of error to raise, and the text to print
+to the user.
+'''
+
+# Raise a TypeError if x is not an integer
+
+# x='hello'
+# if not type(x) is int:
+#     raise TypeError('Only integers are allowed')
+# print("-------------------")
+
+# 40- Python String Formatting
+'''
+F-String was intorduced in Python 3.6, and is now the preferred 
+way of formatting strings.
+Before Python 3.6 we had to use the format() method.
+'''
+
+# F-Strings
+'''
+F-string allows you to format selected parts of a string.
+To specify a string as an f-string, simply put an f in front
+of the string literal, like this:
+'''
+
+txt = f'The price is 49 rials'
+print(txt)
+print("-------------------")
+
+# Placeholders and Modifiers
+'''
+To format values in an f-string, add placeholders {},
+a placeholder can contain variables, operations,
+functions, and modifiers to format the value.
+'''
+
+price = 59
+txt = f'The price is {price} Rials'
+print(txt)
+
+'''
+A placeholder can also include a modifier to format the value.
+A modifier is included by adding a colon : followed by a legal
+formatting type, like .2f which means fixed point number with
+2 decimals:
+'''
+price = 100
+txt = f'The prise is {price:.2f} Rials'
+print(txt)
+print("-------------------")
+
+# Perform Operations in F-Strings
+'''
+You can perform Python operations inside the placeholders.
+You can do math operations:
+'''
+
+txt = f'The price is {20 * 60} Rials'
+print(txt)
+print("-------------------")
+
+price = 60
+tax = 0.09
+txt = f'The price is {price + (price * tax)} Rials'
+print(txt)
+print("-------------------")
+
+price = 45
+txt = f'It is very {'Expensive' if price > 50 else 'Cheap'}'
+print(txt)
+print("-------------------")
+
+# Execute Functions in F-Strings
+
+fruit = 'apples'
+txt = f'I like {fruit.upper()}'
+print(txt)
+print("-------------------")
+
+# The function does not have to be a built-in Python method, you
+# can create your own functions and use them:
+
+def myConverter(x):
+    return x * 0.3048
+txt = f'The plane is flying at a {myConverter(30000)} meter altitude'
+print(txt)
+print("-------------------")
+
+# More Modifiers
+'''
+At the beginning of this chapter we explained how to use the .2f
+modifier to format a number into a fixed point number with 2 decimals.
+
+There are several other modifiers that can be used to format values:
+'''
+price = 59000
+txt = f'The price is {price:,} Rials'
+print(txt)
+print("-------------------")
+
+# Here is a list of all the formatting types.
+
+'''
+Formatting Types -> Description
+:< -> Left aligns the result (within the available space)
+:> -> Right aligns the result (within the available space)
+:^ -> Center aligns the result (within the available space)
+:= -> Places the sign to the left most position
+:+ -> Use a plus sign to indicate if the result is positive or negative
+:- -> Use a minus sign for negative values only
+: -> Use a space to insert an extra space before positive numbers (and a minus sign before negative numbers)
+:, -> Use a comma as a thousand separator
+:_ -> Use a underscore as a thousand separator
+:b -> Binary format
+:c -> Converts the value into the corresponding Unicode character
+:d -> Decimal format
+:e -> Scientific format, with an upper case e
+:E -> Scientific format, with an upper case E
+:f -> Fix point number format
+:F -> Fix point number format, in uppercase format (show inf and nan as INF and NAN)
+:g -> General format
+:G -> General format (using a upper case E for scientific notations)
+:o -> Octal format
+:x -> Hex format, lower case
+:X -> Hex format, upper case
+:n -> Number format
+:% -> Percentage format
+'''
+
+# String format()
+'''
+Before Python 3.6 we used the format() method to format strings.
+
+The format() method can still be used, but f-string are faster
+and the preferred way to format strings.
+
+The next examples in this page demonstrates how to format strings
+with the format() method.
+
+The format() method also uses curly brackets as placeholders {},
+but the syntax is slightly different:
+'''
+price = 50
+txt = 'The price is {} Rials'
+print(txt.format(price))
+print("-------------------")
+
+# You can add parameters inside the curly brackets to specify
+# how to convert the value:
+
+# Format the price to be displayed as a number with two decimals:
+txt = 'The pirce is {:.2f} Rials'
+print(txt)
+print("-------------------")
+
+# Multiple Values
+# If you want to use more values, just add more values to the 
+# format() method:
+quantity = 0
+itemno = 0
+price = 100
+myorder = 'I dont want {} pieces of item number {} for {:.2f} Rials.'
+print(myorder.format(quantity, itemno, price))
+print("-------------------")
+
+age = 30
+name = 'hamed'
+txt = 'His name is {1}. {1} is {0} Years old.'
+print(txt.format(age, name))
+print("-------------------")
+
+# Name Indexes
+'''
+You can also use named indexes by entering a name inside the curly
+brackets {carname}, but then you must use names when you pass the
+parameter values txt.format(carname = 'Toyota Landcurser'):
+'''
+myorder = 'I have a {carname}, it maked at {model}.'
+print(myorder.format(carname = 'Pride 151', model = '1401'))
+print("-------------------")
+
 
