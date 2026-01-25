@@ -3369,4 +3369,122 @@ myorder = 'I have a {carname}, it maked at {model}.'
 print(myorder.format(carname = 'Pride 151', model = '1401'))
 print("-------------------")
 
+# 41- Python None
+'''
+None is a secial constant in Python that represents the absence
+of a value.
+Its data type is NoneType, and None is the only instance of a
+NoneType object.
+'''
 
+# NoneType
+# Variables can be assigned None to indicate 'no value' or 'not set'.
+
+x = None
+print(x)
+print("-------------------")
+
+print(type(x))
+print("-------------------")
+
+# Comparing to None
+# To compare a value to None, use the identity operator is or is not.
+
+result = None
+if result is None:
+    print('No result yet')
+else:
+    print(f'Result is {result}')
+print("-------------------")
+
+# True or False
+# None evaluates to False in a boolean context.
+
+print(bool(None))
+print("-------------------")
+
+# Functions returning None
+# Functions that do not explicitly return a value return None
+# by default.
+
+def myFunc():
+    x = 5
+
+x = myFunc()
+print(x)
+print("-------------------")
+
+# 42- Python User Input
+# User Input
+'''
+Python allows for user input.
+Thant means we are able to ask the user for input.
+The following example asks for your name, and when you enter a name,
+it gets printed on the screen:
+'''
+
+# print('Enter Your Name:')
+# name = input()
+# print(f'Hello {name}')
+print("-------------------")
+
+# Python stops executing when it comes to the input() function,
+# and continues when the user has given some input.
+
+# Using prompt
+'''
+In the example above, the user had to input their name on a new
+line. The Python input() function has a prompt parameter, which
+acts as a message you can put in front of the user input, on the
+same line:
+'''
+
+# name = input('Enter your name: ')
+# print(f'Hello {name}')
+print("-------------------")
+
+# Multiple Inputs
+# You can add as many inputs as you want, Python will stop 
+# executing at each of them, waiting for user input: 
+
+# name = input('Enter your name: ')
+# print(f'Hello {name}')
+# fav1 = input('What is your favorite book :')
+# fav2 = input('What is your favorite color: ')
+# fav3 = input('What is your favorite city: ')
+# print(f'fav book is : {fav1}, fav color is : {fav2}, fav city is : {fav3}.')
+print("-------------------")
+
+# Input Number
+'''
+The input from the user is treated as a string. Even if, in the
+example above, you can input a number, the Python interpreter
+will still treat it as a string.
+You can convert the input into a number with the float() function:
+'''
+x = input('Enter a number:')
+y = math.sqrt(float(x))
+print(f'The square root of {x} is {y}')
+print("-------------------")
+
+# Validate Input
+'''
+It is a good practice to validate any input from the user. In the
+example above, an error will occur if the user inputs something
+other than a number.
+
+To avoid getting an error, we can test the input, and if it is 
+not a number, the user could get a message like 'Wrong input, 
+please try again', and allowed to make a new input:
+'''
+y = True
+while y == True:
+  x = input("Enter a number:")
+  try:
+    x = float(x);
+    y = False
+  except:
+    print("Wrong input, please try again.")
+
+print("Thank you!")
+print("-------------------")
