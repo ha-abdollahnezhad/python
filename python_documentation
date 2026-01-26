@@ -3462,9 +3462,9 @@ example above, you can input a number, the Python interpreter
 will still treat it as a string.
 You can convert the input into a number with the float() function:
 '''
-x = input('Enter a number:')
-y = math.sqrt(float(x))
-print(f'The square root of {x} is {y}')
+# x = input('Enter a number:')
+# y = math.sqrt(float(x))
+# print(f'The square root of {x} is {y}')
 print("-------------------")
 
 # Validate Input
@@ -3477,14 +3477,14 @@ To avoid getting an error, we can test the input, and if it is
 not a number, the user could get a message like 'Wrong input, 
 please try again', and allowed to make a new input:
 '''
-y = True
-while y == True:
-  x = input("Enter a number:")
-  try:
-    x = float(x);
-    y = False
-  except:
-    print("Wrong input, please try again.")
+# y = True
+# while y == True:
+#   x = input("Enter a number:")
+#   try:
+#     x = float(x)
+#     y = False
+#   except:
+#     print("Wrong input, please try again.")
 
-print("Thank you!")
+# print("Thank you!")
 print("-------------------")
