@@ -169,3 +169,346 @@ print(p1.age)
 print(p1.city)
 print(p1.country)
 print("-------------------")
+
+# 3- Python self Parameter
+'''
+The self parameter is a reference to the current instance of the
+class.
+It is used to access properties and methods that belong to the class.
+'''
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def greet(self):
+        print('Hello, my name is : ' + self.name)
+p1 = Person('Hamed', 18)
+p1.greet()
+print("-------------------")
+
+'''
+Note: The self parameter must be the first parameter of any
+method in the class
+
+Why Use self?
+Without self, Python would not know which object's properties you
+want to access:
+'''
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def print_name(self):
+        print(self.name)
+
+p1 = Person('Hamed')
+p2 = Person('Ali')
+
+p1.print_name()
+p2.print_name()
+print("-------------------")
+
+
+'''
+self Does Not Have to Be Named "self"
+It does not have to be named self, you can call it whatever you
+like, but it has to be the first parameter of any method in the
+class:
+'''
+class Person:
+    def __init__(myObject, name, age):
+        myObject.name = name
+        myObject.age = age
+
+    def greet(abc):
+        print('Hello, my name is '+ abc.name)
+    
+p1 = Person('Hamed', 20)
+p1.greet()
+print("-------------------")
+
+'''
+Note: While you can use a different name, it is strongly
+recommended to use self as it is the convention in Python and 
+makes your code more readable to others.
+'''
+
+# Accessing Properties with self
+# You can access any property of the class using self:
+
+class Car:
+    def __init__(self, brand, model, year):
+        self.brand = brand
+        self.model = model
+        self.year = year
+
+    def display_info(self):
+        print(f'{self.year} {self.brand} {self.model}')
+car1 = Car('Toyota', 'Landcruser', 2026)
+car1.display_info()
+print("-------------------")
+
+# Calling Methods with self
+# You can also call other methods within the class using self:
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def greet(self):
+        return 'Hello, ' + self.name
+    def welcome(self):
+        message = self.greet()
+        print(message + '! Welcome to our website.')
+
+p1 = Person('Hamed')
+p1.welcome()
+print("-------------------")
+
+# 4- Class Properties
+'''
+Properties are variables that belong to a class. They store data
+for each object created from the class.
+'''
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+p1 = Person('Hamed', 18)
+print(p1.name)
+print(p1.age)
+print("-------------------")
+
+# Access Properties
+# You can access object properties using dot notation:
+
+class Car:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+
+car1 = Car('Toyota', 'Landcruser')
+print(car1.brand)
+print(car1.model)
+print("-------------------")
+
+# Modify Properties
+# You can modify the value of properties on objects:
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+p1 = Person("Ali", 5)
+print(p1.age, p1.name)
+
+p1.age = 3
+print(p1.age, p1.name)
+print("-------------------")
+
+# Delete Properties
+# You can delete properties from objects using del keyword:
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+p1 = Person('Hamed', 30)
+del p1.age
+print(p1.name)
+# print(p1.age) # This would cause an error
+print("-------------------")
+
+# Class Properties vs Object Properties
+'''
+Properties defined inside __init__() belong to each 
+object (instance properties).
+Properties defined outside method belong to the class 
+itself (class properties) and are shared all objects:
+'''
+
+class Person:
+    species = 'Human'
+    def __init__(self, name):
+        self.name = name
+
+p1 = Person('Hamed')
+p2 = Person('Ali')
+
+print(p1.name, p1.species)
+print(p2.name, p2.species)
+print("-------------------")
+
+# Modifying Class Properties
+# When you modify a class property, it affects all objects:
+
+class Person:
+    lastname = ''
+
+    def __init__(self, name):
+        self.name = name
+p1 = Person('Ali')
+p2 = Person('Hamed')
+
+Person.lastname = 'Alavi'
+
+print(p1.name, p1.lastname)
+print(p2.name, p2.lastname)
+print("-------------------")
+
+# Add New Properties
+# You can add new properties to existing objects:
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+p1 = Person('Ali')
+p1.age = 4
+p1.city = 'Najaf'
+
+print(p1.name, p1.age, p1.city)
+print("-------------------")
+
+'''
+Note: Adding properties this way only adds them to that specific
+object, not to all objects of the class.
+'''
+
+# 5- Python Class Methods
+# Class Methods
+
+'''
+Methods are functions that belong to a class. They define the
+behavior of objects created from the class.
+'''
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def greet(self):
+        print('Hello, my name is ' + self.name)
+
+p1 = Person('Ali')
+p1.greet()
+print("-------------------")
+
+'''
+Note: All methods must have self as the first parameter.
+'''
+# Methods with Parameters
+# Methods can accept parameters just like regular functions:
+
+class Calculator:
+    def add(self, a, b):
+        return a+b
+    def multiply(self, a, b):
+        return a*b
+    
+calc = Calculator()
+print(calc.add(10, 30))
+print(calc.multiply(10, 30))
+print("-------------------")
+
+
+# Methods Accessing Properties
+# Methods can access and modify object properties using self:
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def get_info(self):
+        return f'{self.name} is {self.age} years old'
+    
+p1 = Person('Hamed', 20)
+print(p1.get_info())
+print("-------------------")
+
+# Methods Modifying Properties
+# Methods can modify the properties of an object:
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    def celebrate_birthday(self):
+        self.age += 1
+        print(f'Happy birthday! You are now {self.age}')
+
+p1 = Person('Hamed', 18)
+p1.celebrate_birthday()
+p1.celebrate_birthday()
+print("-------------------")
+
+# The __str__() Method
+'''
+The __str__() method is a special method that controls what is 
+returned when the object is printed:
+'''
+
+# Without the __str__() method:
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+p1 = Person('Hamed', 30)
+print(p1)
+print("-------------------")
+
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def __str__(self):
+        return f'{self.name} ({self.age})'
+    
+p1 = Person('Ali', 20)
+print(p1)
+print("-------------------")
+
+# Multiple Methods
+# A class can have multiple methods that work together:
+
+class Playlist:
+    def __init__(self, name):
+        self.name = name
+        self.songs = []
+
+    def add_song(self, song):
+        self.songs.append(song)
+        print(f'Added: {song}')
+    def remove_song(self, song):
+        if song in self.songs:
+            self.songs.remove(song)
+            print(f'Removed: {song}')
+    def show_songs(self):
+        print(f'Playlist \'{self.name}\':')
+        for song in self.songs:
+            print(f'- {song}')
+
+my_playlist = Playlist('Favorites')
+my_playlist.add_song('karevan')
+my_playlist.add_song('shohada')
+my_playlist.show_songs()
+print("-------------------")
+
+# Delete Methods
+# You can delete methods from a class using del keyword:
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+    def greet(self):
+        print('Hello!')
+p1 = Person('Hamed')
+
+del Person.greet
+# p1.greet() This will cause an error
+print("-------------------")
+
