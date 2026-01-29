@@ -667,5 +667,125 @@ method will be overridden.
 # 6- Python Polymorphism
 '''
 The word 'polymorphism' means 'many forms', and in programming
-it refers to me
+it refers to methods/functions/operators with the same name that can be
+executed on many objects or classes.
+'''
+# Class Polymorphism
+'''
+Polymorphism is often used in Class methods, where we can have multiple
+classes with the same method name.
+
+for example, say we have three classes: Car, Boat, and Plane, and they
+all have a method called move():
+'''
+
+class Car:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+
+    def move(self):
+        print("Drive!")
+class Boat:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+    def move(self):
+        print("Sail!")
+class Plane:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+    def move(self):
+        print('Fly!')
+
+car1 = Car('Toyota', 'Landcruser')
+boat1 = Boat('Ibiza', 'Touring 20')
+plane1 = Plane('Boeing', '747')
+
+for x in (car1, boat1, plane1):
+    x.move()
+print("-------------------")
+
+'''
+Look at the for loop at the end. Because of polymorphism we can execute
+the same method for all three classes.
+'''
+
+# Inheritance Class Polymorphism
+'''
+What about classes with child classes with the same name? Can we use
+polymorphism there?
+
+Yes. if we use the example above and make a parent class called Vehicle,
+and make Car, Boat, Plane child classes of Vehicle, the child classes
+inherits the Veicle methods, but can override them:
+'''
+
+class Vehicle:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+    
+    def move(self):
+        print('Move!')
+class Car(Vehicle):
+    pass
+
+class Boat(Vehicle):
+    def move(self):
+        print('Sail!')
+
+class Plane(Vehicle):
+    def move(self):
+        print('Fly!')
+
+car1 = Car('Toyota', 'Landcruser')
+boat1 = Boat('Ibiz', 'Touring 20')
+plane1 = Plane('Boeing', '747')
+
+for x in (car1, boat1, plane1):
+    print(x.brand)
+    print(x.model)
+    x.move()
+print("-------------------")
+
+'''
+Child classes inherits the properties and methods from the parent class.
+In the example above you can see that the Car class is empty, but it
+inherits brand, model, and move() from Vehicle.
+
+The Boat and Plane classes also inherit brand, model, and move() from
+Vehicle, but they both override the move() method.
+Because of polymorphism we can execute the same method for all classes.
+'''
+
+# 7- Python Encapsulation
+'''
+Encapsulation is about protecting data inside a class.
+It means keeping data(properties) and methods to gether in a class,
+while controlling how the data can be accessed from outside the class.
+This prevents accidental changes to your data and hides the internal
+details of how your class works.
+'''
+
+# Private Properties
+'''
+In Python, you make properties private by using a double underscore
+__ prefix:
+'''
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.__age = age # Private property
+
+p1 = Person('Hamed', 12)
+print(p1.name)
+# print(p1.__age) # This will cause an error
+print("-------------------")
+
+'''
+Note: Private properties cannot be accessed directly from outside
+the class.
 '''
