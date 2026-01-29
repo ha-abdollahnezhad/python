@@ -789,3 +789,270 @@ print("-------------------")
 Note: Private properties cannot be accessed directly from outside
 the class.
 '''
+
+# Get Private Property Value
+'''To Access a private property, you can create a getter method:'''
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.__age = age
+
+    def get_age(self):
+        return self.__age
+    
+p1 = Person('Ali', 62)
+print(p1.get_age())
+print("-------------------")
+
+# Set Private Property Value
+'''To modify a private property, you can create a setter method.
+The setter method can also validate the value before setting it:'''
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.__age = age
+
+    def get_age(self):
+        return self.__age
+    
+    def set_age(self, age):
+        if age > 0:
+            self.__age = age
+        else:
+            print('age must be positive number')
+p1 = Person('Ali', 62)
+print(p1.name, p1.get_age())
+
+p1.set_age(-6)
+print(p1.name, p1.get_age())
+
+# Why Use Encapsulation?
+'''
+Encapsulation provides several benefits:
+* Data Protection: Prevents accidental modification of data.
+* Validation: You can validate data before setting it.
+* Flexibility: Internal implementation can change without affecting 
+externa code.
+* Control: You have full control over how data is accessed and modified.
+'''
+
+class Student:
+    def __init__(self, name):
+        self.name = name
+        self.__grade = 0
+
+    def set_grade(self, grade):
+        if 0 <= grade <= 100:
+            self.__grade = grade
+        else:
+            print('Grade must be between 0 and 100')
+    def get_grade(self):
+        return self.__grade
+
+    def get_status(self):
+        if self.__grade >= 60:
+            return "Passed"
+        else:
+            return "Failed"
+        
+student = Student('Hamed')
+student.set_grade(100)
+print(student.name, student.get_grade(), student.get_status())
+print("-------------------")
+
+# Protected Properties
+'''Python also has a convention for protected properties using a
+single underscor _ prefix:'''
+
+class Person:
+    def __init__(self, name, salary):
+        self.name = name
+        self._salary = salary # Protected property
+
+p1 = Person('Ali', 999999999999999999999999999)
+print(p1.name)
+print(p1._salary)
+print("-------------------")
+
+'''
+Note: A single underscore _ is just a convention. It tells other
+programmers that the property is intended for internal use, but
+Python doesn't enforce this restriction.
+'''
+
+# Private Methods
+'''
+You can also make methods private using the double underscore prefix:
+'''
+
+class Calculator:
+    def __init__(self):
+        self.result = 0
+
+    def __validate(self, num):
+        if not isinstance(num, (int, float)):
+            return False
+        return True
+    
+    def add(self, num):
+        if self.__validate(num):
+            self.result += num
+        else:
+            print('Invalid number')
+calc  = Calculator()
+calc.add(10)
+calc.add(5)
+print(calc.result)
+# calc.__validate(5) # this would cause an error
+print("-------------------")
+
+'''
+Note: Just like private properties with double underscores, private
+methods cannot be called directly from outside the class.
+The __validate method can only be used by other methods inside the class.
+'''
+
+# Name Mangling
+'''
+Name mangling is how Python implements private properties and methods.
+When you use double underscore __ , Python automatically renames it 
+internally by adding _ClassName in fornt.
+For example, __age becomes _Person__age.
+'''
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.__age = age
+p1 = Person('Ali', 63)
+# this is how Python mangles the name:
+print(p1._Person__age) # Not recommended!
+print("-------------------")
+
+'''
+Note: While you can access private properties using the mangled name,
+it's not recommended. It defeats the purpose of encapsulation.
+'''
+
+# 8- Python Inner Classes
+'''
+An inner class is a class defined inside another class. The inner class
+access the properties and methods of the outer class.
+
+Inner classes are useful for grouping classes that are only used in one
+place, making your code more organized.
+'''
+
+class Outer:
+    def __init__(self):
+        self.name = "Outer Class"
+
+    class Inner:
+        def __init__(self):
+            self.name = "Inner Class"
+
+        def display(self):
+            print('This is the inner class')
+
+outer = Outer()
+print(outer.name)
+print(outer.Inner().name)
+print("-------------------")
+
+# Accessing Inner Class from the Outside
+'''
+To access the inner class, create an object of the outer class, and then
+create an object of the inner class:
+'''
+
+class Outer:
+    def __init__(self):
+        self.name = "Outer Class"
+
+    class Inner:
+        def __init__(self):
+            self.name = "Inner Class"
+        def display(self):
+            print(f'Hello from {self.name}')
+
+outer = Outer()
+inner = outer.Inner()
+inner.display()
+print("-------------------")
+
+# Accessing Outer Class from Inner Class
+'''
+Inner classes in Python do not automatically have access to the outer
+class instance.
+If you want the inner class to access the outer class, you need to pass
+the outer class instance as a parameter:
+'''
+class Outer:
+    def __init__(self):
+        self.name = 'Outer'
+
+    class Inner:
+        def __init__(self, outer):
+            self.outer = outer
+
+        def display(self):
+            print(f'Outer class name: {self.outer.name}')
+
+outer = Outer()
+inner = outer.Inner(outer)
+inner.display()
+print("-------------------")
+
+# Practical Example
+'''
+Inner classes are useful for creating helper classes that are only
+used within the context of the outer class:
+'''
+class Car:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+        self.engine = self.Engine()
+
+    class Engine():
+        def __init__(self):
+            self.status = 'Off'
+
+        def start(self):
+            self.status = 'Running'
+            print('Engine started')
+        def stop(self):
+            self.status = 'Off'
+            print('Engine stopped')
+    def drive(self):
+        if self.engine.status == 'Running':
+            print(f'Driving the {self.brand} {self.model}')
+        else:
+            print('Start the engine first')
+
+car = Car('Toyota', 'Landcruser')
+car.drive()
+car.engine.start()
+car.drive()
+print("-------------------")
+
+# Multiple Inner Classes
+'''A Class can have multiple inner classes:'''
+class Computer:
+    def __init__(self):
+        self.cpu = self.CPU()
+        self.ram = self.RAM()
+
+    class CPU:
+        def process(self):
+            print('Processing data...')
+
+    class RAM:
+        def store(self):
+            print('Storing data...')
+computer = Computer()
+computer.cpu.process()
+computer.ram.store()
+print("-------------------")
