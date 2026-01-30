@@ -28,7 +28,8 @@ text mode
 # Syntax
 # To open a file for reading it is enough to specify the name of the file
 
-f = open('demofile.txt')
+f = open('demofile.txt', 'w')
+f.write('This is new content for test\n')
 # The code above is the same as :
 f = open('demofile.txt', 'rt')
 '''
@@ -113,3 +114,92 @@ with open('demofile.txt') as f:
         print(x)
 print("-------------------")
 
+# 2- Python File Write
+'''
+To write to an existing file, you must add a parameter to the open()
+function:
+"a" - Append - Will append to the end of the file
+"w" - Write - Will overwrite any existing content 
+'''
+with open('demofile.txt', 'a') as f:
+    f.write('\nNow the file has more content!')
+
+# open and read the file after the appending:
+with open('demofile.txt') as f:
+    print(f.read())
+print("-------------------")
+
+# Overwrite Existing Content
+'''
+To overwrite the existing content to the file,
+use the w parameter
+'''
+with open('demofile.txt', 'w') as f:
+    f.write('Woops! I have deleted the content!')
+# Open and read the file after the owerwriting:
+with open('demofile.txt') as f:
+    print(f.read())
+print("-------------------")
+
+'''
+Note: the "w" method will overwrite the entier file.
+'''
+
+# Create a New File
+'''
+To create a new file in Python, use the open() method, with one of the
+following parameters:
+"x" - Create - will create a file, returns an error if the file exists
+"a" - Append - will create a file if the specified file does not exists
+"w" - Write - will create a file if the specified file does not exists
+'''
+# f = open('myfile.txt', 'x')
+f = open('myfile.txt', 'w')
+f.write('This is new text file...!')
+print("-------------------")
+
+'''
+Note: If the file already exist, an error will be raised.
+'''
+
+# 3- Python Delete file
+'''
+To delete a file, you must import the OS module, and run its os.remove()
+function:
+'''
+
+import os
+# os.remove('demofile.txt')
+
+# Check if File exist:
+'''
+To avoid getting an error, you might want to check if the file exist
+before you try to delete it:
+'''
+
+import os
+if os.path.exists('demofile.txt'):
+    os.remove("demofile.txt")
+    print("demofile.txt deleted successfully")
+else:
+    print('The file does not exist')
+print("-------------------")
+
+# Delete Folder
+'''
+To delete an entire folder, use the os.rmdir() method:
+'''
+
+import os
+os.mkdir('myfolder')
+print('Folder myfolder created successfully')
+if os.path.exists('myfolder'):
+    os.rmdir('myfolder')
+    print('Folder myfolder deleted successfully')
+else:
+    print('Folder myfolder does not exist')
+print("-------------------")
+
+'''
+Note: You can only remove empty folders.
+'''
