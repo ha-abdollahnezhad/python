@@ -349,8 +349,9 @@ print("--------------------")
 '''
 You can delete an existing table by using the "DROP TABLE" statement:
 '''
-sql = ('CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR (50), email VARCHAR(255))')
-cursor.execute(sql)
+tb_exist = check_table_exists('users')
+if not tb_exist :
+    cursor.execute('CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50), password VARCHAR(50), email VARCHAR(255))')
 
 sql = 'DROP TABLE users'
 cursor.execute(sql)
@@ -428,3 +429,122 @@ for x in result:
     print(x)
 print("--------------------")
 
+# 9- Python MySQL Join
+# Join Two or More Tables
+
+'''
+You can combine rows from two or more tables, based on a related
+column between them,
+by using a JOIN statement.
+Consider you have a "users" table and a "products" table:
+'''
+tb_exist = check_table_exists('products')
+if tb_exist :
+    cursor.execute('DROP TABLE products')
+    cursor.execute('CREATE TABLE products (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255))')
+else:
+    cursor.execute('CREATE TABLE products (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255))')
+
+sql = 'INSERT INTO products (name) VALUES(%s)'
+val = [
+    ('BIOS Battery',),
+    ('CPU Intel I7-HQ',),
+    ('VGA Card Nvidia G8090',),
+    ('Mother Board Asus',),
+    ('Monitor 34" wide Asus',),
+    ('Power Green',),
+    ('Mouse Wireless Rapo',)
+    ]
+cursor.executemany(sql, val)
+mydb.commit()
+print(cursor.rowcount, 'Record Was Inserted Into product Table.')
+print("--------------------")
+
+
+tb_exist = check_table_exists('users')
+if not tb_exist :
+    cursor.execute('CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50), password VARCHAR(50), email VARCHAR(255),fav INT, FOREIGN KEY (fav) REFERENCES products(id))')
+
+
+sql = 'INSERT INTO users (name, password, email, fav) VALUES(%s, %s, %s, %s)'
+val = [
+    ('Hamed', 123, 'abcd@test.com', 1),
+    ('Mohammad', 123, 'abcd@test.com', 1),
+    ('Mahdi', 123, 'abcd@test.com', 2),
+    ('Hosein', 123, 'abcd@test.com', 3),
+    ('Ali', 123, 'abcd@test.com', 2),
+    ('Reza', 123, 'abcd@test.com', 4),
+    ('Sadegh', 123, 'abcd@test.com', 1)
+    ]
+cursor.executemany(sql, val)
+mydb.commit()
+print(cursor.rowcount, 'Record Was Inserted Into users Table.')
+print("--------------------")
+
+'''
+These two tables can be combined using users' fav field and 
+products' id field.
+'''
+
+sql = "SELECT \
+  users.name AS user, \
+  products.name AS favorite \
+  FROM users \
+  INNER JOIN products ON users.fav = products.id"
+
+cursor.execute(sql)
+result = cursor.fetchall()
+for x in result:
+    print(x)
+print("--------------------")
+
+'''
+Note: You can use JOIN instead of INNER JOIN. They will both
+give you the same result.
+'''
+
+# LEFT JOIN
+'''
+In the example above, Hamed, Mohammad, Mahdi, Hosein, Ali, Reza,
+and Sadegh were excluded from the result, that is because INNER
+JOIN only shows the records where there is a match.
+
+If you want to show all users, even if they do not have a favorite
+product, use the LEFT JOIN statement:
+'''
+
+sql = "SELECT " \
+"users.name AS user, " \
+"products.name AS favorite " \
+"FROM users " \
+"LEFT JOIN products ON users.fav = products.id"
+
+cursor.execute(sql)
+result = cursor.fetchall()
+for x in result:
+    print(x)
+print("--------------------")
+
+# RIGHT JOIN
+'''
+If you want to return all products, and the users who have them
+as their favorite, even if no user have them as their favorite,
+use the RIGHT JOIN statement:
+'''
+
+sql = "SELECT " \
+"users.name AS user, " \
+"products.name AS favorite " \
+"FROM users " \
+"RIGHT JOIN products ON users.fav = products.id"
+
+cursor.execute(sql)
+result = cursor.fetchall()
+for x in result:
+    print(x)
+print("--------------------")
+
+'''
+Note: Monitor, Power, and Mouse which have no users products, are not
+included in the result.
+'''
