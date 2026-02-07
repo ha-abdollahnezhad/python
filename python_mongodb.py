@@ -424,3 +424,36 @@ the delete_many() method:
 deleted_items = collection.delete_many({})
 print(deleted_items.deleted_count, 'documents deleted.')
 print('------------------------------')
+
+# Python MongoDB Drop Collection
+# Delete Collection
+
+'''
+You can delete a table, or collection as it is called in MongoDB, by using
+the drop() method.
+'''
+databases = database.list_collection_names()
+collection = database['users']
+if 'users' in databases:
+    collection.drop()
+
+users_list = [
+    {'_id':1, 'name':'hamed', 'email':'abc@email.ir'},
+    {'_id':2, 'name':'danial', 'email':'abc@email.ir'},
+    {'_id':3, 'name':'emran', 'email':'abc@email.ir'},
+    {'_id':4, 'name':'zakaria', 'email':'abc@email.ir'}
+]
+
+insert = collection.insert_many(users_list)
+print(insert.inserted_ids, 'users added.')
+print('------------------------------')
+
+collection.drop()
+print('users collection deleted.')
+print('------------------------------')
+
+'''
+The drop() method returns true if the collection was dropped successfully,
+and false if the collection does not exist.
+'''
+
