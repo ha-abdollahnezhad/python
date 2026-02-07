@@ -448,9 +448,9 @@ insert = collection.insert_many(users_list)
 print(insert.inserted_ids, 'users added.')
 print('------------------------------')
 
-collection.drop()
-print('users collection deleted.')
-print('------------------------------')
+# collection.drop()
+# print('users collection deleted.')
+# print('------------------------------')
 
 '''
 The drop() method returns true if the collection was dropped successfully,
