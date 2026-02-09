@@ -457,3 +457,26 @@ The drop() method returns true if the collection was dropped successfully,
 and false if the collection does not exist.
 '''
 
+# Python MongoDB Update
+# Update Collection
+
+'''
+You can update a record, or document as it is called in MongoDB,
+by using the update_one() method.
+The first parameter of the update_one() method is a query object
+defining which document to update.
+Note: If the query finds more than one record, only the first
+occurrence is updated.
+The second parameter is an object defining the new values of the 
+document.
+'''
+
+query = {'_id':1, 'name':'hamed', 'email':'abc@email.com'}
+new_value = {'$set':{'_id':1, 'name':'Ali', 'email':'abc@email.com'}}
+
+collection = database['users']
+collection.update_one(query, new_value)
+
+for item in collection.find():
+    print(item)
+print('------------------------------')
