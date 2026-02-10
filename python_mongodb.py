@@ -471,12 +471,61 @@ The second parameter is an object defining the new values of the
 document.
 '''
 
-query = {'_id':1, 'name':'hamed', 'email':'abc@email.com'}
-new_value = {'$set':{'_id':1, 'name':'Ali', 'email':'abc@email.com'}}
+query = {'_id':1, 'name':'hamed', 'email':'abc@email.ir'}
+new_value = {'$set':{'_id':1, 'name':'Ali', 'email':'abc@email.ir'}}
 
 collection = database['users']
 collection.update_one(query, new_value)
 
 for item in collection.find():
+    print(item)
+print('------------------------------')
+
+# Update Many
+'''
+To update all documents that meets the criteria of the query, use
+the update_many() method.
+
+Update all documents where the address starts with the letters
+abc and ends withe the ir.
+'''
+
+query = {'email':{'$regex': '^abc.*ir$'}}
+new_value = {'$set':{'email':'info@iran.ir'}}
+
+documents = collection.update_many(query, new_value)
+print(documents.modified_count, 'document updated.')
+print('------------------------------')
+
+
+# Python MongoDB Limit
+# Limit the Result
+
+'''
+To limit the result MongoDB, we use the limit() method.
+The limit() method takes one parameter, a number defining how 
+many documents to return.
+Consider you have a 'customers' collection:
+'''
+
+collection = database['customers']
+customers_list = [
+    {'_id':1, 'name':'Ali', 'city':'Isfahan'},
+    {'_id':2, 'name':'Komeil', 'city':'Ardebil'},
+    {'_id':3, 'name':'Malek', 'city':'Kerman'},
+    {'_id':4, 'name':'Ammar', 'city':'Qom'},
+    {'_id':5, 'name':'Hamed', 'city':'Tehran'},
+    {'_id':6, 'name':'Karim', 'city':'Qom'},
+    {'_id':7, 'name':'Ebrahim', 'city':'Tehran'},
+    {'_id':8, 'name':'Ehsan', 'city':'Tabriz'},
+    {'_id':9, 'name':'Meysam', 'city':'Ahvaz'},
+    {'_id':10, 'name':'Abbas', 'city':'Tehran'}
+]
+insert = collection.insert_many(customers_list)
+print(insert.inserted_ids, 'added documents.')
+print('------------------------------')
+
+result = collection.find().limit(7)
+for item in result:
     print(item)
 print('------------------------------')
